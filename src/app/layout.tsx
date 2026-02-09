@@ -13,9 +13,9 @@ const geistMono = Geist_Mono({
 });
 
 export const metadata: Metadata = {
-  title: "Earthbound Minerals | Coming Soon",
+  title: "Earthbound Minerals | Premium Mineral Resources",
   description:
-    "Earthbound Minerals LLC — Coal Mining, Global Export & Energy. Appalachian Basin, Kentucky.",
+    "Earthbound Minerals LLC — We source, process, and deliver premium minerals to industries worldwide. Coal Mining, Global Export & Energy.",
 };
 
 export default function RootLayout({

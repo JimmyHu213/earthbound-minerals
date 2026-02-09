@@ -3,12 +3,15 @@
 @theme inline {
   --color-brand-black: #0C0A09;
   --color-brand-dark: #1A1816;
+  --color-brand-dark-alt: #221F1C;
   --color-brand-gold: #D4A843;
   --color-brand-gold-light: #F5E6B8;
   --color-brand-gold-dark: #A67C2E;
   --color-brand-stone: #78716C;
   --color-brand-stone-light: #A8A29E;
   --color-brand-stone-dark: #57534E;
+  --color-brand-sand: #F5F0E8;
+  --color-brand-sand-dark: #E8DFD0;
   --font-sans: var(--font-geist-sans);
   --font-mono: var(--font-geist-mono);
 }
@@ -16,4 +19,55 @@
 body {
   background: var(--color-brand-black);
   color: #e7e5e4;
+}
+
+/* Smooth scrolling */
+html {
+  scroll-behavior: smooth;
+}
+
+/* Hero gradient animation */
+@keyframes gradient-shift {
+  0%, 100% { background-position: 0% 50%; }
+  50% { background-position: 100% 50%; }
+}
+
+.animate-gradient {
+  background-size: 200% 200%;
+  animation: gradient-shift 15s ease infinite;
+}
+
+/* Fade-in on scroll utility */
+@keyframes fade-up {
+  from {
+    opacity: 0;
+    transform: translateY(30px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-up {
+  animation: fade-up 0.8s ease-out forwards;
+}
+
+/* Staggered children delay */
+.stagger-1 { animation-delay: 0.1s; }
+.stagger-2 { animation-delay: 0.2s; }
+.stagger-3 { animation-delay: 0.3s; }
+.stagger-4 { animation-delay: 0.4s; }
+
+/* Gold line accent */
+.gold-line {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-brand-gold), transparent);
+}
+
+/* Section divider */
+.section-divider {
+  height: 1px;
+  background: linear-gradient(90deg, transparent, var(--color-brand-gold) 20%, var(--color-brand-gold) 80%, transparent);
+  opacity: 0.2;
 }
