@@ -2,7 +2,7 @@ import { SITE } from "@/lib/constants";
 
 export default function Hero() {
   return (
-    <section className="relative flex min-h-screen items-center justify-center overflow-hidden">
+    <section data-hero className="relative flex min-h-screen items-center justify-center overflow-hidden">
       {/* Background layers */}
       <div className="absolute inset-0 bg-gradient-to-br from-brand-black via-brand-dark to-brand-black animate-gradient" />
       <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(212,168,67,0.08),transparent_60%)]" />
