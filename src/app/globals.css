@@ -65,6 +65,32 @@ html {
   background: linear-gradient(90deg, transparent, var(--color-brand-gold), transparent);
 }
 
+/* Scroll indicator breathing pulse */
+@keyframes scroll-pulse {
+  0%, 100% { opacity: 0.3; }
+  50% { opacity: 0.6; }
+}
+
+.hero-scroll-line {
+  animation: scroll-pulse 2s ease-in-out infinite;
+}
+
+/* Fade-in for tab content transitions */
+@keyframes fade-in {
+  from {
+    opacity: 0;
+    transform: translateY(8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-fade-in {
+  animation: fade-in 0.4s ease-out forwards;
+}
+
 /* Section divider */
 .section-divider {
   height: 1px;

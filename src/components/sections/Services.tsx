@@ -1,67 +1,160 @@
-import { SERVICES } from "@/lib/constants";
+"use client";
 
-const ICONS: Record<string, React.ReactNode> = {
-  globe: (
-    <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 21a9 9 0 100-18 9 9 0 000 18z" />
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M3.6 9h16.8M3.6 15h16.8" />
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M12 3a15 15 0 014 9 15 15 0 01-4 9 15 15 0 01-4-9 15 15 0 014-9z" />
-    </svg>
-  ),
-  cog: (
-    <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M10.325 4.317c.426-1.756 2.924-1.756 3.35 0a1.724 1.724 0 002.573 1.066c1.543-.94 3.31.826 2.37 2.37a1.724 1.724 0 001.066 2.573c1.756.426 1.756 2.924 0 3.35a1.724 1.724 0 00-1.066 2.573c.94 1.543-.826 3.31-2.37 2.37a1.724 1.724 0 00-2.573 1.066c-.426 1.756-2.924 1.756-3.35 0a1.724 1.724 0 00-2.573-1.066c-1.543.94-3.31-.826-2.37-2.37a1.724 1.724 0 00-1.066-2.573c-1.756-.426-1.756-2.924 0-3.35a1.724 1.724 0 001.066-2.573c-.94-1.543.826-3.31 2.37-2.37.996.608 2.296.07 2.573-1.066z" />
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M15 12a3 3 0 11-6 0 3 3 0 016 0z" />
-    </svg>
-  ),
-  truck: (
-    <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M13 16V6a1 1 0 00-1-1H4a1 1 0 00-1 1v10a1 1 0 001 1h1m8-1a1 1 0 01-1 1H9m4-1V8a1 1 0 011-1h2.586a1 1 0 01.707.293l3.414 3.414a1 1 0 01.293.707V16a1 1 0 01-1 1h-1m-6-1a1 1 0 001 1h1M5 17a2 2 0 104 0m-4 0a2 2 0 114 0m6 0a2 2 0 104 0m-4 0a2 2 0 114 0" />
-    </svg>
-  ),
-  shield: (
-    <svg className="h-6 w-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
-      <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={1.5} d="M9 12l2 2 4-4m5.618-4.016A11.955 11.955 0 0112 2.944a11.955 11.955 0 01-8.618 3.04A12.02 12.02 0 003 9c0 5.591 3.824 10.29 9 11.622 5.176-1.332 9-6.03 9-11.622 0-1.042-.133-2.052-.382-3.016z" />
-    </svg>
-  ),
-};
+import { useEffect, useRef, useState } from "react";
+import Image, { StaticImageData } from "next/image";
+import { ArrowRight } from "lucide-react";
+import { SERVICES } from "@/lib/constants";
+import extractionImg from "@/assets/images/extraction.png";
+import processingImg from "@/assets/images/processing.png";
+import logisticImg from "@/assets/images/logistic.png";
+import qualityImg from "@/assets/images/quality.png";
+
+const SERVICE_IMAGES: StaticImageData[] = [
+  extractionImg,
+  processingImg,
+  logisticImg,
+  qualityImg,
+];
 
 export default function Services() {
+  const sectionRef = useRef<HTMLDivElement>(null);
+  const [activeIndex, setActiveIndex] = useState(0);
+  const active = SERVICES[activeIndex];
+  const count = SERVICES.length;
+
+  useEffect(() => {
+    const section = sectionRef.current;
+    if (!section) return;
+
+    const handleScroll = () => {
+      const rect = section.getBoundingClientRect();
+      const sectionHeight = section.offsetHeight;
+      const scrollableDistance = sectionHeight - window.innerHeight;
+
+      if (scrollableDistance <= 0) return;
+
+      // How far we've scrolled into the section (0 to scrollableDistance)
+      const scrolled = -rect.top;
+      const progress = Math.max(0, Math.min(1, scrolled / scrollableDistance));
+
+      // Map progress to service index
+      const index = Math.min(count - 1, Math.floor(progress * count));
+      setActiveIndex(index);
+    };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    return () => window.removeEventListener("scroll", handleScroll);
+  }, [count]);
+
   return (
-    <section id="services" className="relative bg-brand-black py-24 lg:py-32">
-      <div className="absolute top-0 left-0 right-0 section-divider" />
+    <section
+      ref={sectionRef}
+      id="services"
+      style={{ height: `${count * 100}vh` }}
+    >
+      {/* Sticky viewport */}
+      <div className="sticky top-0 h-screen overflow-hidden">
+        {/* Background images — stacked, opacity-controlled */}
+        {SERVICE_IMAGES.map((img, index) => (
+          <div
+            key={index}
+            className="absolute inset-0 transition-all duration-700 ease-in-out"
+            style={{
+              opacity: index === activeIndex ? 1 : 0,
+              transform: index === activeIndex
+                ? "translateY(0)"
+                : index < activeIndex
+                  ? "translateY(-100%)"
+                  : "translateY(100%)",
+            }}
+          >
+            <Image
+              src={img}
+              alt={SERVICES[index].tab}
+              fill
+              className="object-cover"
+              priority={index === 0}
+            />
+          </div>
+        ))}
 
-      <div className="mx-auto max-w-7xl px-6">
-        <div className="text-center">
-          <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-gold">
-            What We Do
-          </p>
-          <h2 className="mt-4 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl">
-            Our Services
-          </h2>
-          <p className="mx-auto mt-4 max-w-2xl text-base leading-relaxed text-brand-stone-light">
-            End-to-end mineral solutions tailored to your industry needs — from
-            sourcing raw materials to delivering finished products worldwide.
-          </p>
-        </div>
+        {/* Dark overlay */}
+        <div className="absolute inset-0 bg-brand-black/60" />
 
-        <div className="mt-16 grid gap-6 sm:grid-cols-2 lg:grid-cols-4">
-          {SERVICES.map((service) => (
-            <div
-              key={service.title}
-              className="group rounded-lg border border-brand-gold/10 bg-brand-dark/60 p-8 transition-all hover:border-brand-gold/30 hover:bg-brand-dark"
-            >
-              <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-brand-gold/10 text-brand-gold transition-colors group-hover:bg-brand-gold/20">
-                {ICONS[service.icon]}
+        {/* Content */}
+        <div className="relative z-10 flex h-full items-center">
+          <div className="w-full px-8 sm:px-12 lg:px-20">
+            <div className="flex items-center justify-between">
+              {/* Left: Text content */}
+              <div className="max-w-2xl">
+                <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-gold">
+                  What We Do
+                </p>
+
+                <h2
+                  key={`title-${activeIndex}`}
+                  className="mt-6 text-3xl font-bold tracking-tight text-white sm:text-4xl lg:text-5xl animate-fade-in"
+                >
+                  {active.title}
+                </h2>
+                <div className="mt-4 h-px w-16 bg-brand-gold/50" />
+                <p
+                  key={`desc-${activeIndex}`}
+                  className="mt-6 max-w-lg text-base leading-relaxed text-white/80 animate-fade-in"
+                >
+                  {active.description}
+                </p>
+                <a
+                  href="/services"
+                  className="mt-8 inline-flex items-center gap-2 rounded-full border border-brand-gold/40 px-7 py-3 text-sm font-medium tracking-wide text-brand-gold cursor-pointer hover:border-brand-gold hover:bg-brand-gold/10 hover:text-brand-gold-light transition-all duration-200"
+                >
+                  Learn More
+                  <ArrowRight className="h-4 w-4" />
+                </a>
               </div>
-              <h3 className="mt-6 text-lg font-semibold text-white">
-                {service.title}
-              </h3>
-              <p className="mt-3 text-sm leading-relaxed text-brand-stone-light">
-                {service.description}
-              </p>
+
+              {/* Right: Dot-text indicator with lines */}
+              <nav className="hidden lg:flex flex-col items-end">
+                {SERVICES.map((service, index) => {
+                  const scrollTarget = sectionRef.current;
+                  return (
+                    <div key={service.tab} className="flex flex-col items-end">
+                      <button
+                        onClick={() => {
+                          if (!scrollTarget) return;
+                          const sectionTop = scrollTarget.offsetTop;
+                          const scrollableDistance = scrollTarget.offsetHeight - window.innerHeight;
+                          const targetScroll = sectionTop + (index / count) * scrollableDistance;
+                          window.scrollTo({ top: targetScroll, behavior: "smooth" });
+                        }}
+                        className="flex items-center gap-3 cursor-pointer group"
+                      >
+                        <span
+                          className={`text-[10px] uppercase tracking-[0.15em] transition-all duration-300 ${
+                            index === activeIndex
+                              ? "font-semibold text-white"
+                              : "font-medium text-white/30 group-hover:text-white/60"
+                          }`}
+                        >
+                          {service.tab}
+                        </span>
+                        <div
+                          className={`h-2.5 w-2.5 shrink-0 rounded-full border-2 transition-all duration-300 ${
+                            index === activeIndex
+                              ? "border-brand-gold bg-brand-gold"
+                              : "border-white/30 bg-transparent group-hover:border-white/50"
+                          }`}
+                        />
+                      </button>
+                      {index < count - 1 && (
+                        <div className="my-2 h-8 w-px mr-[0.3rem] bg-white/15" />
+                      )}
+                    </div>
+                  );
+                })}
+              </nav>
             </div>
-          ))}
+          </div>
         </div>
       </div>
     </section>

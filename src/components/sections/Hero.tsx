@@ -1,69 +1,67 @@
+import Image from "next/image";
+import { ArrowRight } from "lucide-react";
 import { SITE } from "@/lib/constants";
+import heroBg from "@/assets/images/hero-bg.png";
 
 export default function Hero() {
   return (
-    <section data-hero className="relative flex min-h-screen items-center justify-center overflow-hidden">
-      {/* Background layers */}
-      <div className="absolute inset-0 bg-gradient-to-br from-brand-black via-brand-dark to-brand-black animate-gradient" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_30%_20%,rgba(212,168,67,0.08),transparent_60%)]" />
-      <div className="absolute inset-0 bg-[radial-gradient(ellipse_at_70%_80%,rgba(212,168,67,0.04),transparent_50%)]" />
-
-      {/* Grid pattern overlay */}
-      <div
-        className="absolute inset-0 opacity-[0.03]"
-        style={{
-          backgroundImage:
-            "linear-gradient(rgba(212,168,67,0.3) 1px, transparent 1px), linear-gradient(90deg, rgba(212,168,67,0.3) 1px, transparent 1px)",
-          backgroundSize: "80px 80px",
-        }}
+    <section data-hero className="relative flex min-h-screen items-center overflow-hidden">
+      {/* Background image */}
+      <Image
+        src={heroBg}
+        alt=""
+        fill
+        priority
+        placeholder="blur"
+        className="object-cover"
       />
 
-      {/* Content */}
-      <div className="relative z-10 mx-auto max-w-5xl px-6 text-center">
-        {/* Overline */}
-        <p className="text-xs font-medium uppercase tracking-[0.3em] text-brand-gold/70">
-          Coal Mining &middot; Global Export &middot; Energy
-        </p>
+      {/* Dark overlay for text readability */}
+      <div className="absolute inset-0 bg-gradient-to-r from-brand-black/90 via-brand-black/60 to-transparent" />
 
-        {/* Divider */}
-        <div className="mx-auto mt-6 h-px w-20 bg-gradient-to-r from-transparent via-brand-gold/50 to-transparent" />
+      {/* Content — left aligned */}
+      <div className="relative z-10 mx-auto w-full max-w-7xl px-6 py-24">
+        <div className="max-w-2xl">
+          {/* Overline */}
+          <p className="stagger-1 animate-fade-up text-[11px] font-medium uppercase tracking-[0.35em] text-brand-gold/60 opacity-0">
+            Coal Mining &middot; Global Export &middot; Energy
+          </p>
 
-        {/* Heading */}
-        <h1 className="mt-8 text-4xl font-bold tracking-tight text-white sm:text-5xl lg:text-7xl">
-          {SITE.name}
-        </h1>
+          {/* Divider */}
+          <div className="stagger-2 animate-fade-up mt-6 h-px w-24 bg-gradient-to-r from-brand-gold/40 via-brand-gold/20 to-transparent opacity-0" />
 
-        <p className="mt-2 text-lg font-light tracking-wide text-brand-gold sm:text-xl lg:text-2xl">
-          {SITE.tagline}
-        </p>
+          {/* Heading */}
+          <h1 className="stagger-2 animate-fade-up mt-8 text-4xl font-bold tracking-tight text-white opacity-0 sm:text-5xl lg:text-[4.5rem] lg:leading-[1.05]">
+            {SITE.name}
+          </h1>
 
-        <p className="mx-auto mt-6 max-w-2xl text-base leading-relaxed text-brand-stone-light sm:text-lg">
-          {SITE.description}
-        </p>
+          <p className="stagger-3 animate-fade-up mt-3 text-lg font-light tracking-[0.04em] text-brand-gold opacity-0 sm:text-xl lg:text-2xl">
+            {SITE.tagline}
+          </p>
 
-        {/* CTAs */}
-        <div className="mt-10 flex flex-col items-center gap-4 sm:flex-row sm:justify-center">
-          <a
-            href="#services"
-            className="group relative rounded bg-brand-gold px-8 py-3.5 text-sm font-semibold tracking-wide text-brand-black transition-all hover:bg-brand-gold-light hover:shadow-lg hover:shadow-brand-gold/20"
-          >
-            Explore Our Services
-          </a>
-          <a
-            href="#contact"
-            className="rounded border border-brand-gold/30 px-8 py-3.5 text-sm font-semibold tracking-wide text-brand-gold-light transition-all hover:border-brand-gold/60 hover:bg-brand-gold/5"
-          >
-            Contact Us
-          </a>
+          <p className="stagger-3 animate-fade-up mt-7 max-w-xl text-[15px] leading-relaxed text-white/80 opacity-0 sm:text-base lg:text-lg">
+            {SITE.description}
+          </p>
+
+          {/* CTA */}
+          <div className="stagger-4 animate-fade-up mt-10 opacity-0">
+            <a
+              href="#about"
+              className="inline-flex items-center gap-2 rounded-full border border-brand-gold/40 px-7 py-3 text-sm font-medium tracking-wide text-brand-gold transition-all duration-300 hover:border-brand-gold hover:bg-brand-gold/10 hover:text-brand-gold-light"
+            >
+              Learn More
+              <ArrowRight className="h-4 w-4" />
+            </a>
+          </div>
         </div>
       </div>
 
       {/* Scroll indicator */}
-      <div className="absolute bottom-8 left-1/2 -translate-x-1/2 flex flex-col items-center gap-2">
-        <span className="text-[10px] uppercase tracking-[0.25em] text-brand-stone-dark">
+      <div className="stagger-4 animate-fade-up absolute bottom-8 left-1/2 flex -translate-x-1/2 flex-col items-center gap-2 opacity-0">
+        <span className="text-[10px] font-medium uppercase tracking-[0.3em] text-white/40">
           Scroll
         </span>
-        <div className="h-8 w-px bg-gradient-to-b from-brand-gold/40 to-transparent" />
+        <div className="hero-scroll-line h-8 w-px bg-gradient-to-b from-brand-gold/30 to-transparent" />
       </div>
     </section>
   );

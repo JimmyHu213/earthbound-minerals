@@ -4,7 +4,7 @@ import About from "@/components/sections/About";
 import Services from "@/components/sections/Services";
 import Operations from "@/components/sections/Operations";
 import Sustainability from "@/components/sections/Sustainability";
-import Contact from "@/components/sections/Contact";
+import News from "@/components/sections/News";
 import Footer from "@/components/layout/Footer";
 
 export default function Home() {
@@ -17,7 +17,7 @@ export default function Home() {
         <Services />
         <Operations />
         <Sustainability />
-        <Contact />
+        <News />
       </main>
       <Footer />
     </>

@@ -6,6 +6,7 @@ export const SITE = {
   email: "info@earthboundminerals.com",
   phone: "+1 (555) 000-0000",
   address: "123 Mining Avenue, Denver, CO 80202",
+  heroVideo: "/videos/metcoal.mp4",
 } as const;
 
 export const NAV_LINKS = [
@@ -13,32 +14,36 @@ export const NAV_LINKS = [
   { label: "Services", href: "#services" },
   { label: "Operations", href: "#operations" },
   { label: "Sustainability", href: "#sustainability" },
-  { label: "Contact", href: "#contact" },
+  { label: "News", href: "#news" },
 ] as const;
 
 export const SERVICES = [
   {
-    title: "Mineral Sourcing",
+    tab: "Mining Services",
+    title: "Extraction & Mining Operations",
     description:
-      "Global network for sourcing high-quality raw minerals from trusted and certified mines.",
+      "From open-pit to underground operations, we deploy cutting-edge extraction techniques across our global network of certified mines. Our teams work around the clock to deliver premium-grade thermal and metallurgical coal, rare earth elements, and industrial minerals.",
     icon: "globe",
   },
   {
+    tab: "Processing",
     title: "Processing & Refining",
     description:
-      "State-of-the-art facilities ensuring consistent purity and grade for industrial applications.",
+      "State-of-the-art processing facilities ensure consistent purity and grade for every industrial application. Our refining operations transform raw materials into market-ready products that meet the most demanding international specifications.",
     icon: "cog",
   },
   {
+    tab: "Logistics",
     title: "Logistics & Distribution",
     description:
-      "Reliable supply chain management with worldwide delivery and real-time tracking.",
+      "A fully integrated supply chain spanning deep-water ports, rail networks, and trucking fleets. Real-time tracking and dedicated logistics coordinators ensure your materials arrive on time, every time — anywhere in the world.",
     icon: "truck",
   },
   {
+    tab: "Quality",
     title: "Quality Assurance",
     description:
-      "Rigorous testing and certification to meet international standards and client specifications.",
+      "Rigorous testing at every stage — from mine face to final delivery. ISO 9001 certified processes, independent laboratory verification, and full batch traceability give our clients absolute confidence in every shipment.",
     icon: "shield",
   },
 ] as const;
