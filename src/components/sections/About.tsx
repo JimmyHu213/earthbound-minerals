@@ -1,5 +1,5 @@
-import { ArrowRight } from "lucide-react";
 import { SITE } from "@/lib/constants";
+import LinkButton from "@/components/LinkButton";
 
 export default function About() {
   return (
@@ -7,7 +7,7 @@ export default function About() {
       <div className="mx-auto max-w-7xl px-6">
         <div className="grid gap-12 lg:grid-cols-2 lg:gap-20 items-start">
           {/* Left: Video */}
-          <div className="relative aspect-4/3 overflow-hidden rounded-lg shadow-xl">
+          <div className="relative aspect-4/3 overflow-hidden shadow-xl">
             <video
               autoPlay
               muted
@@ -41,13 +41,7 @@ export default function About() {
               Appalachian Basin to international markets, we deliver consistent
               quality at scale.
             </p>
-            <a
-              href="/about"
-              className="mt-8 inline-flex items-center gap-2 rounded-full border border-brand-gold-dark/40 px-7 py-3 text-sm font-medium tracking-wide text-brand-gold-dark cursor-pointer hover:border-brand-gold-dark hover:bg-brand-gold-dark/10 transition-all duration-200"
-            >
-              Learn More
-              <ArrowRight className="h-4 w-4" />
-            </a>
+            <LinkButton href="/about" variant="light" className="mt-8">Learn More</LinkButton>
           </div>
         </div>
       </div>

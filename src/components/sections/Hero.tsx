@@ -1,6 +1,6 @@
 import Image from "next/image";
-import { ArrowRight } from "lucide-react";
 import { SITE } from "@/lib/constants";
+import LinkButton from "@/components/LinkButton";
 import heroBg from "@/assets/images/hero-bg.png";
 
 export default function Hero() {
@@ -45,13 +45,7 @@ export default function Hero() {
 
           {/* CTA */}
           <div className="stagger-4 animate-fade-up mt-10 opacity-0">
-            <a
-              href="#about"
-              className="inline-flex items-center gap-2 rounded-full border border-brand-gold/40 px-7 py-3 text-sm font-medium tracking-wide text-brand-gold transition-all duration-300 hover:border-brand-gold hover:bg-brand-gold/10 hover:text-brand-gold-light"
-            >
-              Learn More
-              <ArrowRight className="h-4 w-4" />
-            </a>
+            <LinkButton href="#about">Learn More</LinkButton>
           </div>
         </div>
       </div>

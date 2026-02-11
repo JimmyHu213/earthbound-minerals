@@ -2,8 +2,8 @@
 
 import { useEffect, useRef, useState } from "react";
 import Image, { StaticImageData } from "next/image";
-import { ArrowRight } from "lucide-react";
 import { SERVICES } from "@/lib/constants";
+import LinkButton from "@/components/LinkButton";
 import extractionImg from "@/assets/images/extraction.png";
 import processingImg from "@/assets/images/processing.png";
 import logisticImg from "@/assets/images/logistic.png";
@@ -104,13 +104,7 @@ export default function Services() {
                 >
                   {active.description}
                 </p>
-                <a
-                  href="/services"
-                  className="mt-8 inline-flex items-center gap-2 rounded-full border border-brand-gold/40 px-7 py-3 text-sm font-medium tracking-wide text-brand-gold cursor-pointer hover:border-brand-gold hover:bg-brand-gold/10 hover:text-brand-gold-light transition-all duration-200"
-                >
-                  Learn More
-                  <ArrowRight className="h-4 w-4" />
-                </a>
+                <LinkButton href="/services" className="mt-8">Learn More</LinkButton>
               </div>
 
               {/* Right: Dot-text indicator with lines */}

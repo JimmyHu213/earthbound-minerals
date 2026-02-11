@@ -44,6 +44,7 @@
     "dev": "next dev",
     "lint": "eslint .",
     "preview": "opennextjs-cloudflare build && opennextjs-cloudflare preview",
+    "preview:remote": "opennextjs-cloudflare build && wrangler versions upload",
     "start": "next start",
     "test": "vitest run",
     "test:watch": "vitest",

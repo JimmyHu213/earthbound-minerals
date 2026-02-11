@@ -1,5 +1,5 @@
-import { ArrowRight } from "lucide-react";
 import { SITE } from "@/lib/constants";
+import LinkButton from "@/components/LinkButton";
 
 export default function Contact() {
   return (
@@ -20,13 +20,7 @@ export default function Contact() {
               logistics, or explore a long-term partnership, our team is here to
               help.
             </p>
-            <a
-              href="/contact"
-              className="mt-8 inline-flex items-center gap-2 rounded-full border border-brand-gold/40 px-7 py-3 text-sm font-medium tracking-wide text-brand-gold cursor-pointer hover:border-brand-gold hover:bg-brand-gold/10 hover:text-brand-gold-light transition-all duration-200"
-            >
-              Contact Us
-              <ArrowRight className="h-4 w-4" />
-            </a>
+            <LinkButton href="/contact" className="mt-8">Contact Us</LinkButton>
           </div>
 
           {/* Right: Contact details */}
