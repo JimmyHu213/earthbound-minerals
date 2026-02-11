@@ -135,7 +135,7 @@ export default function Header() {
           pointerEvents: isPill ? "auto" : "none",
         }}
       >
-        <div className="relative z-10 flex items-center px-4 py-3">
+        <div className="relative z-10 flex items-center justify-between px-4 py-3">
           {/* Logo */}
           <a href="#" className="shrink-0">
             <Image src={EBMLogo} alt={SITE.name} width={30} height={30} />

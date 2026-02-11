@@ -10,11 +10,11 @@ export const SITE = {
 } as const;
 
 export const NAV_LINKS = [
-  { label: "About", href: "#about" },
-  { label: "Services", href: "#services" },
-  { label: "Operations", href: "#operations" },
-  { label: "Sustainability", href: "#sustainability" },
-  { label: "News", href: "#news" },
+  { label: "About", href: "/about" },
+  { label: "Services", href: "/services" },
+  { label: "Operations", href: "/operations" },
+  { label: "Sustainability", href: "/sustainability" },
+  { label: "News", href: "/news" },
 ] as const;
 
 export const SERVICES = [
