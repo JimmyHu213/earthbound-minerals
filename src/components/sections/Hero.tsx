@@ -1,7 +1,7 @@
 import Image from "next/image";
 import { SITE } from "@/lib/constants";
 import LinkButton from "@/components/LinkButton";
-import heroBg from "@/assets/images/hero-bg.png";
+import heroBg from "@/assets/images/hero-bg.webp";
 
 export default function Hero() {
   return (

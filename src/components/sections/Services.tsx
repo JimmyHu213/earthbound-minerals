@@ -4,10 +4,10 @@ import { useEffect, useRef, useState } from "react";
 import Image, { StaticImageData } from "next/image";
 import { SERVICES } from "@/lib/constants";
 import LinkButton from "@/components/LinkButton";
-import extractionImg from "@/assets/images/extraction.png";
-import processingImg from "@/assets/images/processing.png";
-import logisticImg from "@/assets/images/logistic.png";
-import qualityImg from "@/assets/images/quality.png";
+import extractionImg from "@/assets/images/extraction.webp";
+import processingImg from "@/assets/images/processing.webp";
+import logisticImg from "@/assets/images/logistic.webp";
+import qualityImg from "@/assets/images/quality.webp";
 
 const SERVICE_IMAGES: StaticImageData[] = [
   extractionImg,
@@ -72,6 +72,7 @@ export default function Services() {
               src={img}
               alt={SERVICES[index].tab}
               fill
+              placeholder="blur"
               className="object-cover"
               priority={index === 0}
             />

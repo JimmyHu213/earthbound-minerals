@@ -5,7 +5,7 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { NAV_LINKS, SITE } from "@/lib/constants";
 import EBMLogo from "@/assets/images/EBM_Favicon_512.svg";
-import pillbarBg from "@/assets/images/pillbar-bg.png";
+import pillbarBg from "@/assets/images/pillbar-bg.webp";
 
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);

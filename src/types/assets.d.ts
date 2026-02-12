@@ -24,3 +24,12 @@ declare module "*.jpg" {
   };
   export default content;
 }
+
+declare module "*.webp" {
+  const content: {
+    src: string;
+    height: number;
+    width: number;
+  };
+  export default content;
+}

@@ -18,8 +18,8 @@ vi.mock("@/assets/images/EBM_Favicon_512.svg", () => ({
   default: { src: "/logo.svg", width: 512, height: 512 },
 }));
 
-vi.mock("@/assets/images/pillbar-bg.png", () => ({
-  default: { src: "/pillbar-bg.png", width: 256, height: 256 },
+vi.mock("@/assets/images/pillbar-bg.webp", () => ({
+  default: { src: "/pillbar-bg.webp", width: 256, height: 256 },
 }));
 
 import Hero from "@/components/sections/Hero";

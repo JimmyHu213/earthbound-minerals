@@ -5,9 +5,9 @@ import Image from "next/image";
 import { ArrowRight } from "lucide-react";
 import { OPERATIONS } from "@/lib/constants";
 import LinkButton from "@/components/LinkButton";
-import extractionImg from "@/assets/images/extraction.png";
-import processingImg from "@/assets/images/processing.png";
-import logisticImg from "@/assets/images/logistic.png";
+import extractionImg from "@/assets/images/extraction.webp";
+import processingImg from "@/assets/images/processing.webp";
+import logisticImg from "@/assets/images/logistic.webp";
 
 const OPERATION_IMAGES = [extractionImg, processingImg, logisticImg];
 

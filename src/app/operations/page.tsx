@@ -3,9 +3,9 @@ import { MapPin } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import LinkButton from "@/components/LinkButton";
 import { OPERATIONS } from "@/lib/constants";
-import extractionImg from "@/assets/images/extraction.png";
-import processingImg from "@/assets/images/processing.png";
-import logisticImg from "@/assets/images/logistic.png";
+import extractionImg from "@/assets/images/extraction.webp";
+import processingImg from "@/assets/images/processing.webp";
+import logisticImg from "@/assets/images/logistic.webp";
 
 const OPERATION_IMAGES = [extractionImg, processingImg, logisticImg];
 
