@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useCallback } from "react";
+import { useState, useEffect, useCallback, useRef } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -17,15 +17,21 @@ export default function Header() {
   const pathname = usePathname();
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
+  // Reset UI state when pathname changes (during render, not in an effect)
+  const prevPathnameRef = useRef(pathname);
+  if (prevPathnameRef.current !== pathname) {
+    prevPathnameRef.current = pathname;
+    setMenuOpen(false);
+    setIsPill(false);
+    setActiveDropdown(null);
+  }
+
   const handleDropdownLinkClick = useCallback(() => {
     setActiveDropdown(null);
     setMenuOpen(false);
   }, []);
 
   useEffect(() => {
-    setMenuOpen(false);
-    setIsPill(false);
-    setActiveDropdown(null);
     const heroEl = document.querySelector("[data-hero]");
 
     if (!heroEl) {
