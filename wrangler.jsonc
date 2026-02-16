@@ -21,9 +21,5 @@
 			"binding": "CONTACT_RATE_LIMIT",
 			"id": "<KV_NAMESPACE_ID>"
 		}
-	],
-	"vars": {
-		"RESEND_FROM_EMAIL": "noreply@earthboundminerals.com",
-		"CONTACT_TO_EMAIL": "info@earthboundminerals.com"
-	}
+	]
 }
