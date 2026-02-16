@@ -2,27 +2,44 @@
 
 import { useRef } from "react";
 import { useFrame } from "@react-three/fiber";
-import { Icosahedron } from "@react-three/drei";
-import type { Mesh } from "three";
+import { RoundedBox } from "@react-three/drei";
+import type { Group } from "three";
 
 export default function AboutScene() {
-  const meshRef = useRef<Mesh>(null);
+  const groupRef = useRef<Group>(null);
 
   useFrame((_, delta) => {
-    if (meshRef.current) {
-      meshRef.current.rotation.y += delta * 0.4;
-      meshRef.current.rotation.x += delta * 0.1;
+    if (groupRef.current) {
+      groupRef.current.rotation.y += delta * 0.3;
+      groupRef.current.rotation.x += delta * 0.08;
     }
   });
 
   return (
-    <Icosahedron ref={meshRef} args={[1, 0]}>
-      <meshStandardMaterial
-        color="#D4A843"
-        wireframe
-        metalness={0.6}
-        roughness={0.3}
-      />
-    </Icosahedron>
+    <group ref={groupRef}>
+      {[0, 1, 2].map((i) => (
+        <RoundedBox
+          key={i}
+          args={[1.4, 1.4, 0.05]}
+          radius={0.15}
+          smoothness={4}
+          position={[i * 0.15 - 0.15, i * 0.15 - 0.15, i * 0.3 - 0.3]}
+          rotation={[0.1 * i, 0.05 * i, 0]}
+        >
+          <meshPhysicalMaterial
+            color="#c8d0dc"
+            transmission={0.92}
+            roughness={0.15}
+            thickness={0.5}
+            ior={1.5}
+            clearcoat={1}
+            clearcoatRoughness={0.1}
+            metalness={0}
+            transparent
+            opacity={0.6}
+          />
+        </RoundedBox>
+      ))}
+    </group>
   );
 }

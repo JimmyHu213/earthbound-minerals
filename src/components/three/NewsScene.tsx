@@ -10,18 +10,24 @@ export default function NewsScene() {
 
   useFrame((_, delta) => {
     if (meshRef.current) {
-      meshRef.current.rotation.y += delta * 0.3;
-      meshRef.current.rotation.z += delta * 0.15;
+      meshRef.current.rotation.y += delta * 0.25;
+      meshRef.current.rotation.z += delta * 0.1;
     }
   });
 
   return (
-    <Dodecahedron ref={meshRef} args={[0.9, 0]}>
-      <meshStandardMaterial
-        color="#D4A843"
-        wireframe
-        metalness={0.6}
-        roughness={0.3}
+    <Dodecahedron ref={meshRef} args={[1, 0]}>
+      <meshPhysicalMaterial
+        color="#c8d0dc"
+        transmission={0.92}
+        roughness={0.15}
+        thickness={0.5}
+        ior={1.5}
+        clearcoat={1}
+        clearcoatRoughness={0.1}
+        metalness={0}
+        transparent
+        opacity={0.6}
       />
     </Dodecahedron>
   );
