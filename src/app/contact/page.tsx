@@ -1,9 +1,10 @@
 "use client";
 
-import { useState } from "react";
+import { useState, useTransition } from "react";
 import { Mail, Phone, MapPin } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import { SITE } from "@/lib/constants";
+import { submitContact } from "./actions";
 
 type FormData = {
   name: string;
@@ -24,7 +25,9 @@ const initialForm: FormData = {
 export default function ContactPage() {
   const [form, setForm] = useState<FormData>(initialForm);
   const [submitted, setSubmitted] = useState(false);
+  const [serverError, setServerError] = useState<string | null>(null);
   const [errors, setErrors] = useState<Partial<Record<keyof FormData, string>>>({});
+  const [isPending, startTransition] = useTransition();
 
   function validate(): boolean {
     const next: Partial<Record<keyof FormData, string>> = {};
@@ -39,11 +42,21 @@ export default function ContactPage() {
     return Object.keys(next).length === 0;
   }
 
-  function handleSubmit(e: React.FormEvent) {
+  function handleSubmit(e: React.FormEvent<HTMLFormElement>) {
     e.preventDefault();
-    if (validate()) {
-      setSubmitted(true);
-    }
+    if (!validate()) return;
+
+    setServerError(null);
+    const formData = new FormData(e.currentTarget);
+
+    startTransition(async () => {
+      const result = await submitContact(formData);
+      if (result.success) {
+        setSubmitted(true);
+      } else {
+        setServerError(result.error ?? "Something went wrong.");
+      }
+    });
   }
 
   function handleChange(
@@ -95,6 +108,18 @@ export default function ContactPage() {
                     noValidate
                     className="mt-8 space-y-6"
                   >
+                    {/* Honeypot — hidden from real users */}
+                    <div className="hidden" aria-hidden="true">
+                      <label htmlFor="website">Website</label>
+                      <input
+                        type="text"
+                        id="website"
+                        name="website"
+                        tabIndex={-1}
+                        autoComplete="off"
+                      />
+                    </div>
+
                     {/* Name */}
                     <div>
                       <label
@@ -209,11 +234,19 @@ export default function ContactPage() {
                       )}
                     </div>
 
+                    {/* Server error */}
+                    {serverError && (
+                      <p className="rounded-lg bg-red-50 px-4 py-3 text-sm text-red-600">
+                        {serverError}
+                      </p>
+                    )}
+
                     <button
                       type="submit"
-                      className="w-full rounded-lg bg-brand-gold py-3 font-semibold text-brand-black hover:bg-brand-gold-light transition-colors"
+                      disabled={isPending}
+                      className="w-full rounded-lg bg-brand-gold py-3 font-semibold text-brand-black hover:bg-brand-gold-light transition-colors disabled:opacity-50 disabled:cursor-not-allowed"
                     >
-                      Send Message
+                      {isPending ? "Sending..." : "Send Message"}
                     </button>
                   </form>
                 </>
