@@ -10,11 +10,53 @@ export const SITE = {
 } as const;
 
 export const NAV_LINKS = [
-  { label: "About", href: "/about" },
-  { label: "Services", href: "/services" },
-  { label: "Operations", href: "/operations" },
-  { label: "Sustainability", href: "/sustainability" },
-  { label: "News", href: "/news" },
+  {
+    label: "About",
+    href: "/about",
+    subLinks: [
+      { label: "Our Story", href: "/about#story" },
+      { label: "Stats", href: "/about#stats" },
+      { label: "Who We Are", href: "/about#who-we-are" },
+      { label: "Why Earthbound Minerals", href: "/about#why-us" },
+    ],
+  },
+  {
+    label: "Services",
+    href: "/services",
+    subLinks: [
+      { label: "Extraction & Mining", href: "/services#extraction" },
+      { label: "Processing & Refining", href: "/services#processing" },
+      { label: "Logistics & Distribution", href: "/services#logistics" },
+      { label: "Quality Assurance", href: "/services#quality" },
+    ],
+  },
+  {
+    label: "Operations",
+    href: "/operations",
+    subLinks: [
+      { label: "Appalachian Basin", href: "/operations#appalachian" },
+      { label: "Rocky Mountain Complex", href: "/operations#rocky-mountain" },
+      { label: "Gulf Coast Terminal", href: "/operations#gulf-coast" },
+    ],
+  },
+  {
+    label: "Sustainability",
+    href: "/sustainability",
+    subLinks: [
+      { label: "Environmental Stewardship", href: "/sustainability#environmental" },
+      { label: "Community Investment", href: "/sustainability#community" },
+      { label: "Safety Excellence", href: "/sustainability#safety" },
+      { label: "Responsible Supply Chain", href: "/sustainability#supply-chain" },
+    ],
+  },
+  {
+    label: "News",
+    href: "/news",
+    subLinks: [
+      { label: "Global News", href: "/news#global" },
+      { label: "Newsletters", href: "/news#newsletters" },
+    ],
+  },
 ] as const;
 
 export const SERVICES = [
