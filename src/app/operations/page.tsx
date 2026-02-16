@@ -12,9 +12,9 @@ const OPERATION_IMAGES = [extractionImg, processingImg, logisticImg];
 const OPERATION_IDS = ["appalachian", "rocky-mountain", "gulf-coast"];
 
 const STATS = [
-  { value: "5M+", label: "Tons Annually" },
-  { value: "30+", label: "Countries Served" },
-  { value: "20+", label: "Years Operating" },
+  { value: "160k", label: "MT/Month Capacity" },
+  { value: "1.92M", label: "MT/Year at Full Ramp" },
+  { value: "100+", label: "Years Combined Experience" },
 ];
 
 export default function OperationsPage() {

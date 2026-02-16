@@ -2,10 +2,10 @@ export const SITE = {
   name: "Earthbound Minerals",
   tagline: "Powering Industries from the Ground Up",
   description:
-    "We source, process, and deliver premium minerals to industries worldwide. Committed to sustainable practices and uncompromising quality.",
+    "A United States-based coal supply company specialising in the sourcing, processing, and international distribution of premium-grade metallurgical and thermal coal. SGS-verified, ultra-low-ash coking coal delivered to steelmakers and energy producers worldwide.",
   email: "info@earthboundminerals.com",
-  phone: "+1 (555) 000-0000",
-  address: "123 Mining Avenue, Denver, CO 80202",
+  phone: "+61 430 067 311",
+  address: "281 Thomson Road, Apt 405, Pikeville, KY 41501",
   heroVideo: "/videos/metcoal.mp4",
 } as const;
 
@@ -61,84 +61,87 @@ export const NAV_LINKS = [
 
 export const SERVICES = [
   {
-    tab: "Mining Services",
-    title: "Extraction & Mining Operations",
+    tab: "Coal Mining",
+    title: "Coal Mining & Extraction",
     description:
-      "From open-pit to underground operations, we deploy cutting-edge extraction techniques across our global network of certified mines. Our teams work around the clock to deliver premium-grade thermal and metallurgical coal, rare earth elements, and industrial minerals.",
+      "Earthbound Minerals sources premium high-volatile B (HVB) coking coal from the Pocahontas Alma seam in the Central Appalachian coalfield \u2014 one of America\u2019s most storied and geologically significant coal-producing regions. Our mining operations in West Virginia and Kentucky extract coal renowned for its ultra-low ash content, low sulfur, and exceptional coking properties.",
     icon: "globe",
   },
   {
     tab: "Processing",
-    title: "Processing & Refining",
+    title: "Processing & Preparation",
     description:
-      "State-of-the-art processing facilities ensure consistent purity and grade for every industrial application. Our refining operations transform raw materials into market-ready products that meet the most demanding international specifications.",
+      "All coal is processed through the NorthStar preparation plant in Kimper, Kentucky, where it undergoes crushing, screening, and washing to meet precise customer specifications. Our processing operations ensure consistent product quality across every shipment, with SGS-verified laboratory analysis confirming compliance with agreed quality parameters before dispatch.",
     icon: "cog",
   },
   {
     tab: "Logistics",
     title: "Logistics & Distribution",
     description:
-      "A fully integrated supply chain spanning deep-water ports, rail networks, and trucking fleets. Real-time tracking and dedicated logistics coordinators ensure your materials arrive on time, every time — anywhere in the world.",
+      "Earthbound Minerals operates an integrated mine-to-port supply chain utilising the CSX and Norfolk Southern rail networks \u2014 the backbone of American coal logistics. Unit train service provides efficient bulk transport from our Kentucky processing facility directly to East Coast port terminals, with FOB delivery at Port Newark, New Jersey, or Curtis Bay, Baltimore.",
     icon: "truck",
   },
   {
     tab: "Quality",
     title: "Quality Assurance",
     description:
-      "Rigorous testing at every stage — from mine face to final delivery. ISO 9001 certified processes, independent laboratory verification, and full batch traceability give our clients absolute confidence in every shipment.",
+      "Every shipment of Earthbound Minerals coal is independently verified by SGS \u2014 the world\u2019s leading inspection, verification, testing, and certification company. Our coal is tested to ASTM standards across all key quality parameters including ash content, sulfur, volatile matter, calorific value, free swelling index, Gieseler plastometry, and dilatometry.",
     icon: "shield",
   },
 ] as const;
 
 export const ADVANTAGES = [
   {
-    title: "20+ Years Experience",
-    description: "Decades of expertise in the global minerals industry.",
-    stat: "20+",
+    title: "Combined Experience",
+    description:
+      "Senior leadership team with 100+ years across mining, rail, finance, and commerce.",
+    stat: "100+",
     unit: "Years",
   },
   {
-    title: "Sustainable Practices",
+    title: "Premium Quality",
     description:
-      "Environmentally responsible sourcing and processing methods.",
-    stat: "100%",
-    unit: "Compliant",
+      "Coal ash content 60% below Platts PLV benchmark with ultra-low sulfur.",
+    stat: "60%",
+    unit: "Below Platts PLV",
   },
   {
-    title: "Global Reach",
-    description: "Partnerships across 30+ countries on every continent.",
-    stat: "30+",
-    unit: "Countries",
+    title: "International Markets",
+    description:
+      "Serving buyers across multiple international markets from the US East Coast.",
+    stat: "Global",
+    unit: "Reach",
   },
   {
-    title: "Certified Quality",
-    description: "ISO 9001 certified with full traceability on every shipment.",
-    stat: "ISO",
-    unit: "9001",
+    title: "SGS Verified",
+    description:
+      "Every shipment independently tested by SGS to ASTM standards.",
+    stat: "SGS",
+    unit: "ASTM",
   },
 ] as const;
 
 export const OPERATIONS = [
   {
-    title: "Appalachian Basin",
-    location: "Kentucky, United States",
-    type: "Coal Mining & Processing",
+    title: "Liberty Mine \u2014 Central Appalachia",
+    location: "West Virginia & Kentucky, United States",
+    type: "Underground Coal Mining \u2014 Pocahontas Alma Seam",
     description:
-      "Our flagship operation in the heart of Appalachia, producing premium-grade thermal and metallurgical coal for domestic and international markets.",
+      "The Liberty Mine extracts premium coking coal from the Pocahontas Alma seam in the heart of Central Appalachia. This geological formation produces coal of exceptional quality \u2014 with ultra-low ash (3.7%), low sulfur (0.6%), and Gieseler fluidity exceeding 30,000 DDPM \u2014 positioning it among the finest metallurgical coals available in North America.",
   },
   {
-    title: "Rocky Mountain Complex",
-    location: "Colorado, United States",
-    type: "Mineral Extraction",
+    title: "NorthStar Preparation Plant",
+    location: "Kimper, Kentucky, United States",
+    type: "Coal Processing & Preparation",
     description:
-      "Multi-mineral extraction facility specializing in rare earth elements and industrial minerals for the technology and manufacturing sectors.",
+      "All coal from the Liberty Mine is processed at the NorthStar preparation plant in Kimper, Kentucky, where crushing, screening, washing, and quality grading ensure consistent product specifications across every shipment. The facility is equipped to handle scalable throughput from 75,000 to 160,000 metric tonnes per month.",
   },
   {
-    title: "Gulf Coast Terminal",
-    location: "Louisiana, United States",
+    title: "East Coast Export Terminal",
+    location: "Port Newark, NJ / Curtis Bay, Baltimore, MD",
     type: "Export & Logistics Hub",
     description:
-      "Deep-water port terminal handling bulk mineral exports with direct shipping routes to Asia, Europe, and South America.",
+      "Earthbound Minerals delivers coal FOB via deep-water port terminals on the U.S. East Coast. Our primary export route runs from the NorthStar prep plant via CSX/Norfolk Southern rail to the Port Newark Container Terminal (PNCT) and Millennium Marine Rail facility in Elizabeth, New Jersey. An alternative route services Curtis Bay in Baltimore.",
   },
 ] as const;
 
@@ -146,21 +149,21 @@ export const SUSTAINABILITY_PILLARS = [
   {
     title: "Environmental Stewardship",
     description:
-      "Progressive mine rehabilitation, water recycling systems, and carbon reduction programs across all operations.",
+      "We are committed to minimising the environmental impact of our mining operations through progressive rehabilitation, responsible water management, and continuous improvement in operational efficiency.",
   },
   {
     title: "Community Investment",
     description:
-      "Long-term partnerships with local communities through employment, education, and infrastructure development.",
+      "We believe in contributing to the communities where we operate. Through local employment, partnerships with regional businesses, and investment in community infrastructure, Earthbound Minerals aims to create lasting value beyond the mine gate.",
   },
   {
     title: "Safety Excellence",
     description:
-      "Industry-leading safety record with zero-harm targets and comprehensive training for all personnel.",
+      "Safety is the single most important factor in successful mining operations, and at Earthbound Minerals it sits at the very top of our priorities. Our founding team brings decades of frontline experience in Australia\u2019s highly regulated mining industry.",
   },
   {
     title: "Responsible Supply Chain",
     description:
-      "Full traceability and ethical sourcing standards applied to every stage of our mineral supply chain.",
+      "We maintain full transparency across our supply chain \u2014 from mine face to customer delivery. Every consignment is independently tested and certified by SGS to ASTM standards.",
   },
 ] as const;

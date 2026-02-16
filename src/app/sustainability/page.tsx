@@ -14,10 +14,10 @@ const PILLAR_METRICS = [
 ];
 
 const PILLAR_DETAILS = [
-  "Our environmental programs go beyond compliance. Every active site operates under a comprehensive land management plan that includes progressive rehabilitation, native species revegetation, and continuous water quality monitoring. We have invested in closed-loop water recycling systems that dramatically reduce freshwater consumption and ensure that discharged water exceeds regulatory standards.",
-  "We believe mining should be a catalyst for lasting community prosperity. Our community investment strategy focuses on hiring locally first, funding vocational training and education scholarships, and partnering with local governments to improve roads, healthcare facilities, and public infrastructure. These investments endure long after mining operations conclude.",
-  "Safety is non-negotiable at Earthbound Minerals. Every employee and contractor completes rigorous safety induction training, and our operations maintain real-time hazard monitoring systems. Regular safety audits, peer-led observation programs, and a culture where anyone can stop work for safety concerns have driven our industry-leading zero lost-time incident record.",
-  "From mine to market, every kilogram of material we handle is fully documented and traceable. We conduct regular audits of all suppliers and subcontractors, enforce strict anti-corruption and labor standards, and maintain chain-of-custody records that our clients can verify independently. Transparency is the foundation of trust in our supply chain.",
+  "Our environmental management practices are informed by decades of experience operating in regulated mining jurisdictions across Australia and the United States. We hold ourselves to the highest standards of environmental care and compliance, with progressive rehabilitation, responsible water management, and continuous improvement in operational efficiency at the core of every operation.",
+  "Through local employment, partnerships with regional businesses, and investment in community infrastructure, we aim to create lasting value beyond the mine gate. These investments endure long after mining operations conclude.",
+  "EBM is committed to implementing stringent safety and quality controls across our US operations. By adopting the best practices and safety culture developed in Australian mining \u2014 including comprehensive risk management, mandatory training and assessment, and continuous improvement protocols \u2014 we ensure that every person on our sites goes home safe at the end of every shift.",
+  "Every consignment is independently tested and certified by SGS to ASTM standards, and we work exclusively with reputable partners who share our commitment to responsible business practices. Transparency is the foundation of trust in our supply chain.",
 ];
 
 const PILLAR_BGS = ["bg-brand-sand", "bg-white", "bg-brand-sand", "bg-white"];
@@ -44,22 +44,20 @@ export default function SustainabilityPage() {
 
           <div className="mt-10 grid gap-8 lg:grid-cols-2 lg:gap-16">
             <p className="text-base leading-relaxed text-brand-stone-dark">
-              At Earthbound Minerals, sustainability is not an afterthought — it
-              is woven into the fabric of every operation we run. From the
-              earliest stages of site assessment through to post-mining
-              rehabilitation, we integrate environmental, social, and governance
-              considerations into every decision. We understand that the
-              minerals industry carries a unique responsibility to the
-              landscapes and communities it touches.
+              At Earthbound Minerals, we recognise that responsible resource
+              development is fundamental to the long-term success of our
+              business and the communities we serve. We are committed to
+              operating with integrity, minimising our environmental footprint,
+              and ensuring the safety and wellbeing of every person involved in
+              our operations.
             </p>
             <p className="text-base leading-relaxed text-brand-stone-dark">
-              Our approach goes beyond regulatory compliance. We set ambitious
-              internal targets, invest in innovative technologies, and hold
-              ourselves accountable through transparent reporting and
-              independent audits. By aligning our business objectives with the
-              long-term interests of the environment and our stakeholders, we
-              are building a minerals company that future generations can be
-              proud of.
+              Our approach to sustainability is practical and grounded in
+              decades of hands-on mining experience. From land rehabilitation
+              and water management to workforce safety and community
+              engagement, we integrate responsible practices into every stage
+              of our operations &mdash; not as an afterthought, but as a core
+              part of how we do business.
             </p>
           </div>
         </div>
@@ -89,7 +87,7 @@ export default function SustainabilityPage() {
           </div>
         );
 
-        const metricContent = (
+        const metricContent = metric ? (
           <div className="flex items-center justify-center">
             <div className="text-center">
               <p className="text-5xl font-bold text-brand-gold-dark">
@@ -100,22 +98,24 @@ export default function SustainabilityPage() {
               </p>
             </div>
           </div>
-        );
+        ) : null;
 
         return (
           <section key={pillar.title} id={PILLAR_IDS[index]} className={`${PILLAR_BGS[index]} py-24 lg:py-32`}>
             <div className="mx-auto max-w-7xl px-6">
-              <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
-                {isOdd ? (
+              <div className={`grid gap-12 ${metricContent ? "lg:grid-cols-2" : ""} lg:gap-16 items-center`}>
+                {metricContent && isOdd ? (
                   <>
                     {textContent}
                     {metricContent}
+                  </>
+                ) : metricContent ? (
+                  <>
+                    {metricContent}
+                    {textContent}
                   </>
                 ) : (
-                  <>
-                    {metricContent}
-                    {textContent}
-                  </>
+                  textContent
                 )}
               </div>
             </div>
@@ -143,11 +143,10 @@ export default function SustainabilityPage() {
             performance go hand in hand.
           </p>
 
-          <div className="mt-16 grid gap-10 sm:grid-cols-3">
+          <div className="mt-16 grid gap-10 sm:grid-cols-2 max-w-2xl mx-auto">
             {[
               { stat: "30%", label: "Carbon Reduction Target" },
               { stat: "100%", label: "Site Rehabilitation Goal" },
-              { stat: "2030", label: "Net-Zero Target" },
             ].map((item) => (
               <div key={item.label} className="text-center">
                 <p className="text-3xl font-bold text-brand-gold">

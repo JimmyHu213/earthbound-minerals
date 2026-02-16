@@ -26,20 +26,23 @@ export default function About() {
               About Us
             </p>
             <h2 className="mt-4 text-3xl font-bold tracking-tight text-brand-black sm:text-4xl lg:text-5xl">
-              A Legacy of Excellence in Mineral Resources
+              Premium Coal, Mine to Market
             </h2>
             <div className="mt-4 h-px w-16 bg-brand-gold/50" />
             <p className="mt-6 text-base leading-relaxed text-brand-stone-dark">
-              {SITE.name} is a leading supplier of premium minerals, serving
-              industries ranging from construction and manufacturing to technology
-              and energy. With over two decades of experience, we bridge the gap
-              between raw earth resources and the materials that power modern life.
+              {SITE.name} is a United States-based coal supply company
+              specialising in premium-grade metallurgical and thermal coal. With
+              direct access to the renowned Pocahontas seam in the Appalachian
+              Basin and an established supply chain spanning mine, preparation
+              plant, rail, and deep-water port, we deliver SGS-verified,
+              ultra-low-ash coking coal to steelmakers and energy producers
+              worldwide.
             </p>
             <p className="mt-4 text-base leading-relaxed text-brand-stone-dark">
-              Our commitment to sustainability, quality, and reliability has made
-              us a trusted partner for businesses across the globe. From the
-              Appalachian Basin to international markets, we deliver consistent
-              quality at scale.
+              Backed by over 100 years of combined leadership experience across
+              mining operations, rail infrastructure, finance, and international
+              commerce, we connect world-class Appalachian coal resources with
+              the industries that depend on them.
             </p>
             <LinkButton href="/about" variant="light" className="mt-8">Learn More</LinkButton>
           </div>

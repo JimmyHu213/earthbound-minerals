@@ -15,28 +15,28 @@ const SERVICE_IDS = ["extraction", "processing", "logistics", "quality"];
 
 const SERVICE_BULLETS = [
   [
-    "Open-pit and underground extraction across certified global sites",
-    "Premium-grade thermal and metallurgical coal production",
-    "Rare earth elements and industrial mineral recovery",
-    "24/7 operations with advanced safety monitoring systems",
+    "Mine: Liberty Mine \u2014 Pocahontas Alma Seam, WV & Kentucky",
+    "Coal Type: Premium HVB Metallurgical / Coking Coal",
+    "Ash Content: 3.7% (dry) \u2014 60% below Platts PLV benchmark",
+    "Sulfur Content: 0.6% (dry) \u2014 ultra-low, within Fastmarkets premium range",
   ],
   [
-    "Crushing, screening, and washing to exact specifications",
-    "Chemical and thermal refining for maximum purity",
-    "Custom blending to meet client-specific requirements",
-    "Continuous process optimization using real-time analytics",
+    "Prep Plant: NorthStar, Kimper, KY",
+    "Fluidity (Gieseler): >30,000 DDPM \u2014 matches US High Vol A specification",
+    "Free Swelling Index: 8.5 \u2014 top of Hard Coking Coal range (HCC: 6\u20139)",
+    "Calorific Value: ~14,850 Btu/lb (dry basis)",
   ],
   [
-    "Deep-water port access with direct international shipping routes",
-    "Integrated rail and trucking fleet for domestic distribution",
-    "Real-time GPS tracking on every shipment",
-    "Dedicated logistics coordinators for key accounts",
+    "Rail Transport: CSX and Norfolk Southern unit train service",
+    "Rail Yards: Newark, Elizabeth, South Kearny (NJ)",
+    "Port Terminals: PNCT (Port Newark), Millennium Marine Rail (Elizabeth, NJ)",
+    "Delivery Terms: FOB East Coast (Port Newark, NJ or Baltimore, MD)",
   ],
   [
-    "ISO 9001 certified testing at every production stage",
-    "Independent third-party laboratory verification",
-    "Full batch traceability from mine face to delivery",
-    "Automated sampling and grading for consistent output",
+    "Testing Laboratory: SGS North America Inc., Harrogate, TN",
+    "Methods: ASTM D3302, D3174, D3175, D4239, D5865, D720, D2639, D5515, D5263",
+    "Buyer Protections: SGS-verified quality specs with contractual rejection rights",
+    "Traceability: Full batch traceability from mine face to FOB vessel",
   ],
 ];
 

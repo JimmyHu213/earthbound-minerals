@@ -15,31 +15,24 @@ const LATEST_NEWS: {
 }[] = [
   {
     date: "Feb 2026",
-    title: "Expanding Appalachian Operations",
+    title: "Liberty Mine Coal Exceeds International Quality Benchmarks",
     excerpt:
-      "New extraction capacity added to our flagship Kentucky facility to meet growing demand for metallurgical coal and industrial minerals across the eastern seaboard.",
-    image: extractionImg,
-  },
-  {
-    date: "Jan 2026",
-    title: "ISO 9001 Recertification Achieved",
-    excerpt:
-      "Our quality management systems have been recertified to the latest ISO 9001 standards across all active mining and processing operations.",
+      "Independent SGS laboratory analysis of washed coal from the Liberty Mine\u2019s Pocahontas Alma seam has confirmed exceptional quality results. January 2026 test results showed ash content 60% below the Platts PLV benchmark, sulfur within the premium range, and maximum fluidity exceeding 30,000 DDPM.",
     image: qualityImg,
   },
   {
-    date: "Dec 2025",
-    title: "Gulf Coast Export Milestone",
+    date: "Jan 2026",
+    title: "World-Class Leadership Team Assembled",
     excerpt:
-      "Our Louisiana deep-water port terminal surpasses 2 million tons of mineral exports in a single quarter, setting a new operational record.",
-    image: logisticImg,
+      "Earthbound Minerals has assembled a senior leadership team with over 100 years of combined experience across mining operations, rail infrastructure, finance, and international commerce.",
+    image: processingImg,
   },
   {
-    date: "Nov 2025",
-    title: "Sustainable Mining Initiative",
+    date: "May 2024",
+    title: "Earthbound Minerals Launches Operations in Appalachian Basin",
     excerpt:
-      "New environmental stewardship program aims to reduce operational carbon footprint by 30% over the next five years across all facilities.",
-    image: processingImg,
+      "Earthbound Minerals LLC has commenced operations in the Appalachian Basin, Kentucky, marking the company\u2019s entry into the US coal market. Founded by Australian mining veterans Stephen Freeman and Rick Markham, EBM is focused on supplying premium thermal and metallurgical coal to international markets.",
+    image: extractionImg,
   },
 ];
 
