@@ -201,7 +201,7 @@ export const LEADERSHIP = [
   },
   {
     name: "Doug McCabe",
-    title: "President",
+    title: "President, Internal Sales & Export",
     experience: "50+",
     experienceLabel: "Years in Rail & Mining",
     bio: [
