@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 
 type PageHeroProps = {
@@ -15,9 +16,9 @@ export default function PageHero({ title, subtitle, breadcrumb }: PageHeroProps)
       <div className="relative z-10 mx-auto max-w-7xl px-6">
         {/* Breadcrumb */}
         <nav className="flex items-center gap-1.5 text-xs tracking-wide text-white/40">
-          <a href="/" className="hover:text-brand-gold transition-colors">
+          <Link href="/" className="hover:text-brand-gold transition-colors">
             Home
-          </a>
+          </Link>
           <ChevronRight className="h-3 w-3" />
           <span className="text-white/60">{breadcrumb}</span>
         </nav>

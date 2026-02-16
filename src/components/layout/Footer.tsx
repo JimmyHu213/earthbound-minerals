@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import { ArrowUpRight } from "lucide-react";
 import { NAV_LINKS, SITE } from "@/lib/constants";
 import EBMLogo from "@/assets/images/EBM_Favicon_512.svg";
@@ -38,12 +39,12 @@ export default function Footer() {
             <ul className="mt-6 space-y-4">
               {NAV_LINKS.map((link) => (
                 <li key={link.href}>
-                  <a
+                  <Link
                     href={link.href}
                     className="text-sm text-white/50 hover:text-brand-gold transition-colors duration-200"
                   >
                     {link.label}
-                  </a>
+                  </Link>
                 </li>
               ))}
             </ul>

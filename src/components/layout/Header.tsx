@@ -2,6 +2,8 @@
 
 import { useState, useEffect } from "react";
 import Image from "next/image";
+import Link from "next/link";
+import { usePathname } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 import { NAV_LINKS, SITE } from "@/lib/constants";
 import EBMLogo from "@/assets/images/EBM_Favicon_512.svg";
@@ -10,8 +12,11 @@ import pillbarBg from "@/assets/images/pillbar-bg.webp";
 export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isPill, setIsPill] = useState(false);
+  const pathname = usePathname();
 
   useEffect(() => {
+    setMenuOpen(false);
+    setIsPill(false);
     const heroEl = document.querySelector("[data-hero]");
 
     if (!heroEl) {
@@ -34,42 +39,41 @@ export default function Header() {
 
     observer.observe(heroEl);
     return () => observer.disconnect();
-  }, []);
+  }, [pathname]);
 
   return (
     <>
       {/* Normal header — scrolls with page */}
       <header
-        className={`absolute top-0 left-0 right-0 z-40 transition-opacity duration-300 ${
-          isPill ? "opacity-0 pointer-events-none" : "opacity-100"
-        }`}
+        className={`absolute top-0 left-0 right-0 z-40 transition-opacity duration-300 ${isPill ? "opacity-0 pointer-events-none" : "opacity-100"
+          }`}
       >
         <div className="mx-auto max-w-7xl flex items-stretch justify-between px-6">
-          <a href="/" className="flex items-center gap-3 py-4">
+          <Link href="/" className="flex items-center gap-3 py-4">
             <Image src={EBMLogo} alt={SITE.name} width={36} height={36} />
             <span className="text-lg font-semibold tracking-wide text-brand-gold-light">
               {SITE.name}
             </span>
-          </a>
+          </Link>
 
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-stretch gap-0">
             {NAV_LINKS.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className="relative flex items-center px-4 text-base font-medium tracking-wide text-white cursor-pointer hover:text-brand-gold hover:bg-white/10 hover:backdrop-blur-md transition-all duration-200"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
-            <a
+            <Link
               href="/contact"
               className="ml-4 inline-flex items-center gap-2 self-center rounded-full border border-brand-gold/40 px-5 py-2 text-sm font-medium tracking-wide text-brand-gold cursor-pointer hover:bg-brand-gold/10 hover:border-brand-gold hover:text-brand-gold-light transition-all"
             >
               Get in Touch
               <ArrowRight className="h-4 w-4" />
-            </a>
+            </Link>
           </nav>
 
           {/* Mobile menu button */}
@@ -109,38 +113,36 @@ export default function Header() {
         {menuOpen && !isPill && (
           <nav className="lg:hidden border-t border-brand-gold/10 bg-brand-black/95 backdrop-blur-md px-6 py-6 flex flex-col gap-5">
             {NAV_LINKS.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className="text-base font-medium tracking-wide text-white hover:text-brand-gold transition-colors"
                 onClick={() => setMenuOpen(false)}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
-            <a
+            <Link
               href="/contact"
               className="mt-2 inline-flex items-center justify-center gap-2 rounded-full border border-brand-gold/40 px-5 py-2.5 text-center text-sm font-medium tracking-wide text-brand-gold hover:bg-brand-gold/10 hover:border-brand-gold hover:text-brand-gold-light transition-all"
               onClick={() => setMenuOpen(false)}
             >
               Get in Touch
               <ArrowRight className="h-4 w-4" />
-            </a>
+            </Link>
           </nav>
         )}
       </header>
 
       {/* Pill bar — fixed, slides in when scrolled past 50% of hero */}
       <div
-        className={`fixed z-50 left-0 right-0 mx-4 lg:mx-auto max-w-[720px] overflow-hidden shadow-lg shadow-black/30 transition-[top,opacity,transform] duration-500 ease-in-out ${
-          menuOpen && isPill ? "rounded-2xl" : "rounded-full"
-        } ${
-          isPill
+        className={`fixed z-50 left-0 right-0 mx-4 lg:mx-auto max-w-[720px] overflow-hidden shadow-lg shadow-black/30 transition-[top,opacity,transform] duration-500 ease-in-out ${menuOpen && isPill ? "rounded-2xl" : "rounded-full"
+          } ${isPill
             ? "top-4 opacity-100 translate-y-0"
             : "-top-20 opacity-0 -translate-y-4"
-        }`}
+          }`}
         style={{
-          backgroundImage: `linear-gradient(rgba(12,10,9,0.85), rgba(12,10,9,0.85)), url(${pillbarBg.src})`,
+          backgroundImage: `linear-gradient(rgba(12,10,9,0.5), rgba(12,10,9,0.5)), url(${pillbarBg.src})`,
           backgroundSize: "cover",
           backgroundPosition: "center",
           pointerEvents: isPill ? "auto" : "none",
@@ -148,42 +150,42 @@ export default function Header() {
       >
         <div className="relative z-10 flex items-center justify-between px-4 py-3">
           {/* Logo */}
-          <a href="/" className="shrink-0">
+          <Link href="/" className="shrink-0">
             <Image src={EBMLogo} alt={SITE.name} width={30} height={30} />
-          </a>
+          </Link>
 
           {/* Desktop nav links — centered */}
           <nav className="hidden lg:flex flex-1 items-center justify-center gap-1">
             {NAV_LINKS.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className="px-3 py-1.5 text-sm font-medium tracking-wide text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] rounded-md hover:text-brand-gold hover:bg-white/10 hover:backdrop-blur-md transition-all duration-200"
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
 
           {/* Desktop CTA */}
-          <a
+          <Link
             href="/contact"
             className="hidden lg:inline-flex items-center gap-1.5 shrink-0 rounded-full border border-brand-gold/40 px-4 py-1.5 text-xs font-medium tracking-wide text-brand-gold drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] hover:bg-brand-gold/10 hover:border-brand-gold hover:text-brand-gold-light transition-all"
           >
             Get in Touch
             <ArrowRight className="h-3 w-3" />
-          </a>
+          </Link>
 
           {/* Mobile: CTA + Menu button */}
           <div className="lg:hidden flex items-center gap-2">
-            <a
+            <Link
               href="/contact"
               className="inline-flex items-center gap-1.5 rounded-full border border-brand-gold/40 px-4 py-1.5 text-xs font-medium tracking-wide text-brand-gold hover:bg-brand-gold/10 hover:border-brand-gold hover:text-brand-gold-light transition-all"
               onClick={() => setMenuOpen(false)}
             >
               Get in Touch
               <ArrowRight className="h-3.5 w-3.5" />
-            </a>
+            </Link>
             <button
               className="p-2 text-brand-stone-light"
               onClick={() => setMenuOpen(!menuOpen)}
@@ -219,14 +221,14 @@ export default function Header() {
         {menuOpen && isPill && (
           <nav className="lg:hidden border-t border-brand-gold/10 px-6 py-6 flex flex-col gap-5">
             {NAV_LINKS.map((link) => (
-              <a
+              <Link
                 key={link.href}
                 href={link.href}
                 className="text-sm tracking-wide text-brand-stone-light hover:text-brand-gold transition-colors"
                 onClick={() => setMenuOpen(false)}
               >
                 {link.label}
-              </a>
+              </Link>
             ))}
           </nav>
         )}
