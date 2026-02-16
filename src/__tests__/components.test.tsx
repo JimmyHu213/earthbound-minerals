@@ -1,16 +1,40 @@
 import { describe, it, expect, vi } from "vitest";
 import { render, screen } from "@testing-library/react";
 
-// Mock next/image since it doesn't work in jsdom
+// Mock next/image
 vi.mock("next/image", () => ({
   default: (props: Record<string, unknown>) => {
     const { src, ...rest } = props;
-    const imgSrc = typeof src === "object" && src !== null && "src" in src
-      ? (src as { src: string }).src
-      : String(src);
+    const imgSrc =
+      typeof src === "object" && src !== null && "src" in src
+        ? (src as { src: string }).src
+        : String(src);
     // eslint-disable-next-line @next/next/no-img-element, jsx-a11y/alt-text
     return <img src={imgSrc} {...rest} />;
   },
+}));
+
+// Mock next/link
+vi.mock("next/link", () => ({
+  default: ({
+    children,
+    href,
+    ...rest
+  }: {
+    children: React.ReactNode;
+    href: string;
+    [key: string]: unknown;
+  }) => (
+    <a href={href} {...rest}>
+      {children}
+    </a>
+  ),
+}));
+
+// Mock lucide-react
+vi.mock("lucide-react", () => ({
+  ArrowRight: () => <span data-testid="arrow-right" />,
+  ArrowUpRight: () => <span data-testid="arrow-up-right" />,
 }));
 
 // Mock static image imports
@@ -18,8 +42,24 @@ vi.mock("@/assets/images/EBM_Favicon_512.svg", () => ({
   default: { src: "/logo.svg", width: 512, height: 512 },
 }));
 
-vi.mock("@/assets/images/pillbar-bg.webp", () => ({
-  default: { src: "/pillbar-bg.webp", width: 256, height: 256 },
+vi.mock("@/assets/images/hero-bg.webp", () => ({
+  default: { src: "/hero-bg.webp", width: 1920, height: 1080, blurDataURL: "" },
+}));
+
+vi.mock("@/assets/images/extraction.webp", () => ({
+  default: { src: "/extraction.webp", width: 1920, height: 1080, blurDataURL: "" },
+}));
+
+vi.mock("@/assets/images/processing.webp", () => ({
+  default: { src: "/processing.webp", width: 1920, height: 1080, blurDataURL: "" },
+}));
+
+vi.mock("@/assets/images/logistic.webp", () => ({
+  default: { src: "/logistic.webp", width: 1920, height: 1080, blurDataURL: "" },
+}));
+
+vi.mock("@/assets/images/quality.webp", () => ({
+  default: { src: "/quality.webp", width: 1920, height: 1080, blurDataURL: "" },
 }));
 
 import Hero from "@/components/sections/Hero";
@@ -32,20 +72,13 @@ describe("Hero", () => {
     render(<Hero />);
     expect(screen.getByText("Earthbound Minerals")).toBeInTheDocument();
     expect(
-      screen.getByText("Powering Industries from the Ground Up")
+      screen.getByText("Premium Coking Coal \u2014 From Mine to Market")
     ).toBeInTheDocument();
   });
 
-  it("renders CTA links", () => {
+  it("renders Learn More CTA", () => {
     render(<Hero />);
-    expect(screen.getByText("Explore Our Services")).toHaveAttribute(
-      "href",
-      "#services"
-    );
-    expect(screen.getByText("Contact Us")).toHaveAttribute(
-      "href",
-      "#contact"
-    );
+    expect(screen.getByText("Learn More")).toHaveAttribute("href", "#about");
   });
 
   it("has the data-hero attribute for scroll detection", () => {
@@ -60,13 +93,11 @@ describe("About", () => {
     expect(container.querySelector("#about")).toBeInTheDocument();
   });
 
-  it("renders heading and stats", () => {
+  it("renders heading", () => {
     render(<About />);
     expect(
-      screen.getByText("A Legacy of Excellence in Mineral Resources")
+      screen.getByText("Premium Coal, Mine to Market")
     ).toBeInTheDocument();
-    expect(screen.getByText("20+")).toBeInTheDocument();
-    expect(screen.getByText("30+")).toBeInTheDocument();
   });
 });
 
@@ -76,31 +107,26 @@ describe("Services", () => {
     expect(container.querySelector("#services")).toBeInTheDocument();
   });
 
-  it("renders all service titles", () => {
+  it("renders the first service title by default", () => {
     render(<Services />);
-    expect(screen.getByText("Mineral Sourcing")).toBeInTheDocument();
-    expect(screen.getByText("Processing & Refining")).toBeInTheDocument();
-    expect(screen.getByText("Logistics & Distribution")).toBeInTheDocument();
-    expect(screen.getByText("Quality Assurance")).toBeInTheDocument();
+    expect(screen.getByText("Coal Mining & Extraction")).toBeInTheDocument();
   });
 });
 
 describe("Footer", () => {
-  it("renders site name and description", () => {
+  it("renders site name", () => {
     render(<Footer />);
     expect(screen.getByText("Earthbound Minerals")).toBeInTheDocument();
   });
 
   it("renders navigation links", () => {
     render(<Footer />);
-    expect(screen.getByText("About")).toHaveAttribute("href", "#about");
-    expect(screen.getByText("Services")).toHaveAttribute("href", "#services");
-    // "Contact" appears as both a nav link and a section heading, so use getAllByText
-    const contactLinks = screen.getAllByText("Contact");
-    const contactNavLink = contactLinks.find(
-      (el) => el.tagName === "A" && el.getAttribute("href") === "#contact"
+    expect(screen.getByText("About")).toHaveAttribute("href", "/about");
+    expect(screen.getByText("Services")).toHaveAttribute("href", "/services");
+    expect(screen.getByText("Operations")).toHaveAttribute(
+      "href",
+      "/operations"
     );
-    expect(contactNavLink).toBeDefined();
   });
 
   it("renders contact info", () => {

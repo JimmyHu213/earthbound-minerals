@@ -24,10 +24,20 @@ describe("NAV_LINKS", () => {
     expect(NAV_LINKS.length).toBeGreaterThanOrEqual(3);
   });
 
-  it("each link has a label and anchor href", () => {
+  it("each link has a label and path href", () => {
     NAV_LINKS.forEach((link) => {
       expect(link.label).toBeTruthy();
-      expect(link.href).toMatch(/^#/);
+      expect(link.href).toMatch(/^\//);
+    });
+  });
+
+  it("each link has subLinks", () => {
+    NAV_LINKS.forEach((link) => {
+      expect(link.subLinks.length).toBeGreaterThanOrEqual(1);
+      link.subLinks.forEach((sub) => {
+        expect(sub.label).toBeTruthy();
+        expect(sub.href).toBeTruthy();
+      });
     });
   });
 
@@ -42,8 +52,9 @@ describe("SERVICES", () => {
     expect(SERVICES.length).toBeGreaterThanOrEqual(2);
   });
 
-  it("each service has title, description, and icon", () => {
+  it("each service has tab, title, description, and icon", () => {
     SERVICES.forEach((service) => {
+      expect(service.tab).toBeTruthy();
       expect(service.title).toBeTruthy();
       expect(service.description).toBeTruthy();
       expect(service.icon).toBeTruthy();

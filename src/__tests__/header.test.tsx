@@ -14,8 +14,44 @@ vi.mock("next/image", () => ({
   },
 }));
 
+// Mock next/link
+vi.mock("next/link", () => ({
+  default: ({
+    children,
+    href,
+    ...rest
+  }: {
+    children: React.ReactNode;
+    href: string;
+    [key: string]: unknown;
+  }) => (
+    <a href={href} {...rest}>
+      {children}
+    </a>
+  ),
+}));
+
+// Mock next/navigation
+vi.mock("next/navigation", () => ({
+  usePathname: () => "/",
+}));
+
+// Mock lucide-react
+vi.mock("lucide-react", () => ({
+  ArrowRight: () => <span data-testid="arrow-right" />,
+}));
+
+// Mock NavDropdown
+vi.mock("@/components/layout/NavDropdown", () => ({
+  default: () => <div data-testid="nav-dropdown" />,
+}));
+
 vi.mock("@/assets/images/EBM_Favicon_512.svg", () => ({
   default: { src: "/logo.svg", width: 512, height: 512 },
+}));
+
+vi.mock("@/assets/images/EBM_Logo_Horizontal_DarkBG.svg", () => ({
+  default: { src: "/logo-horizontal.svg", width: 261, height: 36 },
 }));
 
 vi.mock("@/assets/images/pillbar-bg.webp", () => ({
@@ -43,9 +79,10 @@ beforeEach(() => {
 });
 
 describe("Header", () => {
-  it("renders the site name in the static header", () => {
+  it("renders the logo image", () => {
     render(<Header />);
-    expect(screen.getByText("Earthbound Minerals")).toBeInTheDocument();
+    const logos = screen.getAllByAltText("Earthbound Minerals");
+    expect(logos.length).toBeGreaterThanOrEqual(1);
   });
 
   it("renders all navigation links", () => {
@@ -64,7 +101,6 @@ describe("Header", () => {
   });
 
   it("sets up IntersectionObserver on mount", () => {
-    // Add a hero element for the observer to find
     const heroEl = document.createElement("section");
     heroEl.setAttribute("data-hero", "");
     document.body.appendChild(heroEl);
@@ -79,14 +115,11 @@ describe("Header", () => {
     render(<Header />);
     const menuButton = screen.getAllByLabelText("Toggle menu")[0];
 
-    // Menu should not be visible initially — check for mobile nav link absence
     const mobileNavBefore = screen.queryAllByText("Operations");
-    // Just the desktop + pill versions
     const initialCount = mobileNavBefore.length;
 
     fireEvent.click(menuButton);
 
-    // After click, mobile menu should show additional links
     const mobileNavAfter = screen.getAllByText("Operations");
     expect(mobileNavAfter.length).toBeGreaterThan(initialCount);
   });
