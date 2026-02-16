@@ -45,7 +45,7 @@ export async function createJWT(
   const keyData = pemToUint8Array(privateKey);
   const cryptoKey = await crypto.subtle.importKey(
     "pkcs8",
-    keyData,
+    keyData as BufferSource,
     { name: "RSASSA-PKCS1-v1_5", hash: "SHA-256" },
     false,
     ["sign"],
