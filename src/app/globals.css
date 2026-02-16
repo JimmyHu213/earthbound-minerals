@@ -97,3 +97,24 @@ html {
   background: linear-gradient(90deg, transparent, var(--color-brand-gold) 20%, var(--color-brand-gold) 80%, transparent);
   opacity: 0.2;
 }
+
+/* Offset anchor scroll targets for fixed header */
+[id] {
+  scroll-margin-top: 100px;
+}
+
+/* Dropdown enter animation */
+@keyframes dropdown-in {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.animate-dropdown-in {
+  animation: dropdown-in 0.15s ease-out;
+}

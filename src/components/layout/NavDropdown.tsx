@@ -19,7 +19,7 @@ export default function NavDropdown({ navLabel, subLinks, onLinkClick }: NavDrop
   return (
     <div
       role="menu"
-      className="w-[280px] overflow-hidden rounded-xl border border-brand-gold/20 bg-brand-black/90 backdrop-blur-md shadow-xl shadow-black/30"
+      className="w-[280px] overflow-hidden rounded-xl border border-brand-gold/20 bg-brand-black/90 backdrop-blur-md shadow-xl shadow-black/30 animate-dropdown-in"
     >
       {/* 3D Scene */}
       <div className="h-[120px] lg:h-[120px] border-b border-brand-gold/10">
