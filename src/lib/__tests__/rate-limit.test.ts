@@ -14,7 +14,7 @@ describe("checkRateLimit", () => {
     const result = await checkRateLimit(kv, "192.168.1.1", 5);
     expect(result.allowed).toBe(true);
     expect(kv.put).toHaveBeenCalledWith("rate:192.168.1.1", "1", {
-      expirationTtl: 3600,
+      expirationTtl: 86400,
     });
   });
 
@@ -23,7 +23,7 @@ describe("checkRateLimit", () => {
     const result = await checkRateLimit(kv, "192.168.1.1", 5);
     expect(result.allowed).toBe(true);
     expect(kv.put).toHaveBeenCalledWith("rate:192.168.1.1", "4", {
-      expirationTtl: 3600,
+      expirationTtl: 86400,
     });
   });
 

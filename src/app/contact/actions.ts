@@ -11,7 +11,7 @@ type SubmitResult = {
   error?: string;
 };
 
-const RATE_LIMIT = 5;
+const RATE_LIMIT = 3;
 
 export async function submitContact(formData: FormData): Promise<SubmitResult> {
   // Extract fields
