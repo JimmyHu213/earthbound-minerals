@@ -1,6 +1,9 @@
+import { Shield, Truck, TrendingUp, DollarSign, Users } from "lucide-react";
 import PageHero from "@/components/PageHero";
 import LinkButton from "@/components/LinkButton";
-import { SITE, ADVANTAGES } from "@/lib/constants";
+import { SITE, ADVANTAGES, WHY_US, LEADERSHIP } from "@/lib/constants";
+
+const WHY_US_ICONS = [Shield, Truck, TrendingUp, DollarSign, Users];
 
 export default function AboutPage() {
   return (
@@ -10,8 +13,6 @@ export default function AboutPage() {
         subtitle="Connecting world-class Appalachian coal resources with international markets through decades of mining, logistics, and commercial expertise."
         breadcrumb="About"
       />
-
-      <div id="why-us" />
 
       {/* Story Section */}
       <section id="story" className="bg-white py-24 lg:py-32">
@@ -92,6 +93,46 @@ export default function AboutPage() {
         </div>
       </section>
 
+      {/* Why Earthbound Minerals Section */}
+      <section id="why-us" className="bg-white py-24 lg:py-32">
+        <div className="mx-auto max-w-7xl px-6">
+          <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-gold-dark">
+            Why Earthbound Minerals
+          </p>
+          <div className="mt-4 h-px w-16 bg-brand-gold/50" />
+          <h2 className="mt-6 text-3xl font-bold tracking-tight text-brand-black sm:text-4xl">
+            Quality, Reliability, Scale &amp; Transparency
+          </h2>
+          <p className="mt-6 max-w-3xl text-base leading-relaxed text-brand-stone-dark">
+            When global steelmakers evaluate coal supply partners, they look for
+            quality, reliability, scale, and commercial transparency. Earthbound
+            Minerals delivers on all four.
+          </p>
+
+          <div className="mt-14 grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
+            {WHY_US.map((item, i) => {
+              const Icon = WHY_US_ICONS[i];
+              return (
+                <div
+                  key={item.title}
+                  className="rounded-lg bg-brand-sand p-8"
+                >
+                  <div className="flex h-12 w-12 items-center justify-center rounded-lg bg-brand-gold-dark/10">
+                    <Icon className="h-6 w-6 text-brand-gold-dark" />
+                  </div>
+                  <h3 className="mt-5 text-lg font-semibold text-brand-black">
+                    {item.title}
+                  </h3>
+                  <p className="mt-3 text-sm leading-relaxed text-brand-stone-dark">
+                    {item.description}
+                  </p>
+                </div>
+              );
+            })}
+          </div>
+        </div>
+      </section>
+
       {/* Values / Mission Section */}
       <section id="who-we-are" className="bg-brand-sand py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6">
@@ -121,6 +162,44 @@ export default function AboutPage() {
               ensure that supply chain remains strong, reliable, and commercially
               sound for decades to come.
             </p>
+          </div>
+        </div>
+      </section>
+
+      {/* Leadership Teaser Section */}
+      <section className="bg-brand-black py-24 lg:py-32">
+        <div className="mx-auto max-w-7xl px-6">
+          <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-gold">
+            Our Leadership
+          </p>
+          <div className="mt-4 h-px w-16 bg-brand-gold/50" />
+          <h2 className="mt-6 text-3xl font-bold tracking-tight text-white sm:text-4xl">
+            World-Class Experience Across Mining, Rail &amp; Commerce
+          </h2>
+
+          <div className="mt-14 grid gap-6 sm:grid-cols-2 lg:grid-cols-5">
+            {LEADERSHIP.map((person) => (
+              <div key={person.name} className="rounded-lg border border-white/10 p-6">
+                <p className="text-2xl font-bold text-brand-gold">
+                  {person.experience}
+                </p>
+                <p className="mt-1 text-xs uppercase tracking-wide text-brand-gold/60">
+                  {person.experienceLabel}
+                </p>
+                <h3 className="mt-4 text-base font-semibold text-white">
+                  {person.name}
+                </h3>
+                <p className="mt-1 text-sm text-white/50">
+                  {person.title}
+                </p>
+              </div>
+            ))}
+          </div>
+
+          <div className="mt-12">
+            <LinkButton href="/about/team" variant="dark">
+              Meet the Team
+            </LinkButton>
           </div>
         </div>
       </section>
