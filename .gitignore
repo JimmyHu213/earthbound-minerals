@@ -205,3 +205,6 @@ next-env.d.ts
 
 # Claude
 .claude/
+
+# Git worktrees
+.worktrees/
