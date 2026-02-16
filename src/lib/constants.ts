@@ -201,7 +201,7 @@ export const LEADERSHIP = [
   },
   {
     name: "Doug McCabe",
-    title: "Chief Executive Officer",
+    title: "President",
     experience: "50+",
     experienceLabel: "Years in Rail & Mining",
     bio: [
@@ -212,7 +212,7 @@ export const LEADERSHIP = [
   {
     name: "Geoff Shannon",
     title: "Vice President, Internal Sales & Export",
-    experience: "15+",
+    experience: "40+",
     experienceLabel: "Years in Trade",
     bio: [
       "Proven international commodity trader and entrepreneur with deep expertise in farm-to-market supply chain management, having built and managed large-scale horticultural export operations delivering to China and international markets. Brings entrepreneurial commercial instincts, international logistics acumen, and a track record of scaling operations to Earthbound Minerals.",
