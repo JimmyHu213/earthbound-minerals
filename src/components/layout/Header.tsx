@@ -116,7 +116,7 @@ export default function Header() {
                   {link.label}
                 </Link>
                 {activeDropdown === link.label && (
-                  <div className="absolute left-1/2 top-full -translate-x-1/2 pt-2 z-50">
+                  <div className="absolute left-1/2 top-full -translate-x-1/2 pt-2 z-50 pointer-events-none">
                     <NavDropdown
                       navLabel={link.label}
                       subLinks={link.subLinks}
@@ -256,7 +256,7 @@ export default function Header() {
                   {link.label}
                 </Link>
                 {activeDropdown === link.label && (
-                  <div className="absolute left-1/2 top-full -translate-x-1/2 pt-2 z-50">
+                  <div className="absolute left-1/2 top-full -translate-x-1/2 pt-2 z-50 pointer-events-none">
                     <NavDropdown
                       navLabel={link.label}
                       subLinks={link.subLinks}

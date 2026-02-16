@@ -19,7 +19,7 @@ export default function NavDropdown({ navLabel, subLinks, onLinkClick }: NavDrop
   return (
     <div
       role="menu"
-      className="w-[420px] overflow-hidden rounded-xl border border-white/10 bg-brand-black/90 backdrop-blur-md shadow-xl shadow-black/30 animate-dropdown-in"
+      className="w-[420px] overflow-hidden rounded-xl border border-white/10 bg-brand-black/90 backdrop-blur-md shadow-xl shadow-black/30 animate-dropdown-in pointer-events-auto"
     >
       <div className="flex">
         {/* Sub-links */}
