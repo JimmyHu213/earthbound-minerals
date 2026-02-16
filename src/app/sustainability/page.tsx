@@ -4,6 +4,8 @@ import { SUSTAINABILITY_PILLARS } from "@/lib/constants";
 
 const PILLAR_ICONS = [Leaf, Users, Shield, Link2];
 
+const PILLAR_IDS = ["environmental", "community", "safety", "supply-chain"];
+
 const PILLAR_METRICS = [
   { stat: "95%", label: "Water Recycled" },
   { stat: "500+", label: "Local Jobs Created" },
@@ -101,7 +103,7 @@ export default function SustainabilityPage() {
         );
 
         return (
-          <section key={pillar.title} className={`${PILLAR_BGS[index]} py-24 lg:py-32`}>
+          <section key={pillar.title} id={PILLAR_IDS[index]} className={`${PILLAR_BGS[index]} py-24 lg:py-32`}>
             <div className="mx-auto max-w-7xl px-6">
               <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
                 {isOdd ? (

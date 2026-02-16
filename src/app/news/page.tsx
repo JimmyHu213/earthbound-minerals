@@ -55,7 +55,7 @@ export default function NewsPage() {
       />
 
       {/* Featured Article */}
-      <section className="bg-brand-dark py-24">
+      <section id="global" className="bg-brand-dark py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
             <div className="overflow-hidden rounded-lg">
@@ -90,7 +90,7 @@ export default function NewsPage() {
       </section>
 
       {/* Article Grid */}
-      <section className="bg-white py-24">
+      <section id="newsletters" className="bg-white py-24">
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid gap-8 sm:grid-cols-2 lg:grid-cols-3">
             {rest.map((article) => (

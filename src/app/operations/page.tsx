@@ -9,6 +9,8 @@ import logisticImg from "@/assets/images/logistic.webp";
 
 const OPERATION_IMAGES = [extractionImg, processingImg, logisticImg];
 
+const OPERATION_IDS = ["appalachian", "rocky-mountain", "gulf-coast"];
+
 const STATS = [
   { value: "5M+", label: "Tons Annually" },
   { value: "30+", label: "Countries Served" },
@@ -31,6 +33,7 @@ export default function OperationsPage() {
             {OPERATIONS.map((op, i) => (
               <div
                 key={op.title}
+                id={OPERATION_IDS[i]}
                 className="relative overflow-hidden rounded-lg min-h-[400px] lg:min-h-[500px]"
               >
                 <Image

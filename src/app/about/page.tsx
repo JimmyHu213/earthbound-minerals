@@ -11,8 +11,10 @@ export default function AboutPage() {
         breadcrumb="About"
       />
 
+      <div id="why-us" />
+
       {/* Story Section */}
-      <section className="bg-white py-24 lg:py-32">
+      <section id="story" className="bg-white py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid gap-12 lg:grid-cols-2 lg:gap-16 items-center">
             <div className="overflow-hidden rounded-lg">
@@ -60,7 +62,7 @@ export default function AboutPage() {
       </section>
 
       {/* Advantages / Stats Section */}
-      <section className="bg-brand-black py-24 lg:py-32">
+      <section id="stats" className="bg-brand-black py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6">
           <div className="grid gap-10 sm:grid-cols-2 lg:grid-cols-4">
             {ADVANTAGES.map((item) => (
@@ -84,7 +86,7 @@ export default function AboutPage() {
       </section>
 
       {/* Values / Mission Section */}
-      <section className="bg-brand-sand py-24 lg:py-32">
+      <section id="who-we-are" className="bg-brand-sand py-24 lg:py-32">
         <div className="mx-auto max-w-7xl px-6">
           <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-gold-dark">
             Our Mission

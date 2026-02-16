@@ -11,6 +11,8 @@ import qualityImg from "@/assets/images/quality.webp";
 
 const SERVICE_IMAGES = [extractionImg, processingImg, logisticImg, qualityImg];
 
+const SERVICE_IDS = ["extraction", "processing", "logistics", "quality"];
+
 const SERVICE_BULLETS = [
   [
     "Open-pit and underground extraction across certified global sites",
@@ -79,6 +81,7 @@ export default function ServicesPage() {
               return (
                 <div
                   key={service.tab}
+                  id={SERVICE_IDS[i]}
                   className={`grid items-center gap-12 lg:grid-cols-2 lg:gap-16 ${isReversed ? "lg:direction-rtl" : ""}`}
                 >
                   {/* Image */}
