@@ -1,6 +1,4 @@
 # Copy to .dev.vars and fill in values for local development
 RESEND_API_KEY=re_xxxxxxxxxxxx
-GOOGLE_SERVICE_ACCOUNT_KEY={"type":"service_account","project_id":"...","private_key":"...","client_email":"..."}
-GOOGLE_SHEET_ID=your-spreadsheet-id-here
 RESEND_FROM_EMAIL=noreply@earthboundminerals.com
 CONTACT_TO_EMAIL=info@earthboundminerals.com
