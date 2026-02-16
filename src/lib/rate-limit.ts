@@ -1,4 +1,4 @@
-const RATE_LIMIT_TTL = 3600; // 1 hour in seconds
+const RATE_LIMIT_TTL = 86400; // 24 hours in seconds
 
 export async function checkRateLimit(
   kv: KVNamespace,
