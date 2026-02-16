@@ -6,14 +6,15 @@
   --color-brand-dark-alt: #221F1C;
   --color-brand-gold: #D4A843;
   --color-brand-gold-light: #F5E6B8;
+  --color-brand-gold-mid: #C9973B;
   --color-brand-gold-dark: #A67C2E;
   --color-brand-stone: #78716C;
   --color-brand-stone-light: #A8A29E;
   --color-brand-stone-dark: #57534E;
-  --color-brand-sand: #F5F0E8;
+  --color-brand-sand: #F5F3EF;
   --color-brand-sand-dark: #E8DFD0;
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+  --font-sans: 'Helvetica Neue', 'Segoe UI', Arial, sans-serif;
+  --font-mono: ui-monospace, SFMono-Regular, 'SF Mono', Menlo, monospace;
 }
 
 body {

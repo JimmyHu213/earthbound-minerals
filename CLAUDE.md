@@ -39,6 +39,7 @@ Path alias: `@/*` maps to `./src/*`.
 ## Styling
 
 Tailwind utility-first with custom brand colors defined as CSS variables in `globals.css`:
+
 - Primary: `brand-gold` (#D4A843), with `brand-gold-light` and `brand-gold-dark` variants
 - Neutral: `brand-stone`, `brand-black`, `brand-dark`
 
@@ -55,3 +56,6 @@ Uses Geist font family (sans + mono) loaded via `next/font`.
 - Components use PascalCase filenames and default exports
 - Client components must declare `"use client"` directive
 - Mobile-first responsive design using Tailwind breakpoints (sm, md, lg)
+- Do not include claude as co-author in the commit message
+- make sure check with me before run npm run deploy
+- only work under current folder, DO NOT operate write action outside of current folder range
