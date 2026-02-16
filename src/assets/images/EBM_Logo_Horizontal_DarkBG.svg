@@ -1,0 +1,29 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 580 80" width="580" height="80">
+  <defs>
+    <linearGradient id="hdgold" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" style="stop-color:#F5E6B8"/>
+      <stop offset="25%" style="stop-color:#D4A843"/>
+      <stop offset="75%" style="stop-color:#C9973B"/>
+      <stop offset="100%" style="stop-color:#A67C2E"/>
+    </linearGradient>
+    <linearGradient id="hdgoldLine" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#A67C2E;stop-opacity:0.2"/>
+      <stop offset="20%" style="stop-color:#D4A843"/>
+      <stop offset="80%" style="stop-color:#D4A843"/>
+      <stop offset="100%" style="stop-color:#A67C2E;stop-opacity:0.2"/>
+    </linearGradient>
+    <linearGradient id="hdblack" x1="0%" y1="0%" x2="0%" y2="100%">
+      <stop offset="0%" style="stop-color:#1A1816"/>
+      <stop offset="100%" style="stop-color:#0C0A09"/>
+    </linearGradient>
+  </defs>
+  <rect x="0" y="5" width="155" height="70" fill="url(#hdblack)" stroke="#292524" stroke-width="0.5" rx="4"/>
+  <rect x="4" y="9" width="147" height="62" fill="none" stroke="#D4A843" stroke-width="0.5" rx="2" opacity="0.45"/>
+  <text x="78" y="38" font-family="'Helvetica Neue','Segoe UI',Arial,sans-serif" font-size="26" font-weight="300" text-anchor="middle" letter-spacing="12" fill="url(#hdgold)">EBM</text>
+  <rect x="30" y="43" width="95" height="0.8" fill="#D4A843" opacity="0.5"/>
+  <text x="78" y="57" font-family="'Helvetica Neue',Arial,sans-serif" font-size="7" font-weight="200" text-anchor="middle" letter-spacing="5" fill="#78716C">EARTHBOUND</text>
+  <text x="78" y="66" font-family="'Helvetica Neue',Arial,sans-serif" font-size="5" font-weight="300" text-anchor="middle" letter-spacing="4" fill="#57534E">MINERALS LLC</text>
+  <rect x="170" y="15" width="1.2" height="50" fill="url(#hdgoldLine)" opacity="0.5"/>
+  <text x="190" y="38" font-family="'Helvetica Neue','Segoe UI',Arial,sans-serif" font-size="28" font-weight="200" fill="#E7E5E4" letter-spacing="6">EARTHBOUND</text>
+  <text x="190" y="58" font-family="'Helvetica Neue',Arial,sans-serif" font-size="10" font-weight="300" fill="#78716C" letter-spacing="8">MINERALS LLC</text>
+</svg>
