@@ -45,10 +45,16 @@ export const NAV_LINKS = [
     label: "Sustainability",
     href: "/sustainability",
     subLinks: [
-      { label: "Environmental Stewardship", href: "/sustainability#environmental" },
+      {
+        label: "Environmental Stewardship",
+        href: "/sustainability#environmental",
+      },
       { label: "Community Investment", href: "/sustainability#community" },
       { label: "Safety Excellence", href: "/sustainability#safety" },
-      { label: "Responsible Supply Chain", href: "/sustainability#supply-chain" },
+      {
+        label: "Responsible Supply Chain",
+        href: "/sustainability#supply-chain",
+      },
     ],
   },
   {
@@ -204,6 +210,15 @@ export const LEADERSHIP = [
     ],
   },
   {
+    name: "Geoff Shannon",
+    title: "Vice President, Internal Sales & Export",
+    experience: "15+",
+    experienceLabel: "Years in Trade",
+    bio: [
+      "Proven international commodity trader and entrepreneur with deep expertise in farm-to-market supply chain management, having built and managed large-scale horticultural export operations delivering to China and international markets. Brings entrepreneurial commercial instincts, international logistics acumen, and a track record of scaling operations to Earthbound Minerals.",
+    ],
+  },
+  {
     name: "Suzanne Bennett",
     title: "Chief Financial Officer",
     experience: "25+",
@@ -212,15 +227,6 @@ export const LEADERSHIP = [
       "Suzanne Bennett is a versatile finance and business professional who brings extensive commercial acumen to Earthbound Minerals. Holding an Advanced Diploma of Accounting, qualifications in Australian Taxation Law and Commercial Law, and a Public Practice Certificate from the Institute of Public Accountants, Suzanne combines deep financial expertise with proven entrepreneurial capability.",
       "Suzanne\u2019s career spans over two decades of building and managing successful businesses across multiple sectors \u2014 from wholesale health food production and international export (Sumabe, with distribution to the UK, Europe, China, and the Middle East) to hospitality, property development, and financial services. As Managing Director of Sumabe, she developed international sales relationships with major corporate clients and managed single-invoice transactions exceeding $800,000. Her experience negotiating with international buyers, managing multi-currency operations, and navigating cross-border compliance frameworks is directly applicable to EBM\u2019s coal trading operations.",
       "As Principal of Nationlink Accounting Solutions and Licensee of Nationlink Solutions (Australian Credit Licence holder), Suzanne currently provides business advisory, accounting, and commercial funding services \u2014 demonstrating the financial stewardship and commercial judgment she brings to her role as CFO of Earthbound Minerals.",
-    ],
-  },
-  {
-    name: "Geoff Shannon",
-    title: "Vice President, Internal Sales & Export",
-    experience: "15+",
-    experienceLabel: "Years in Trade",
-    bio: [
-      "Proven international commodity trader and entrepreneur with deep expertise in farm-to-market supply chain management, having built and managed large-scale horticultural export operations delivering to China and international markets. Brings entrepreneurial commercial instincts, international logistics acumen, and a track record of scaling operations to Earthbound Minerals.",
     ],
   },
 ] as const;

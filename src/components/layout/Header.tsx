@@ -17,9 +17,12 @@ export default function Header() {
   const pathname = usePathname();
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
 
-  // Reset UI state when pathname changes (during render, not in an effect)
+  // Reset UI state when pathname changes (React-recommended pattern:
+  // https://react.dev/learn/you-might-not-need-an-effect#adjusting-state-when-a-prop-changes)
   const prevPathnameRef = useRef(pathname);
+  // eslint-disable-next-line react-hooks/refs
   if (prevPathnameRef.current !== pathname) {
+    // eslint-disable-next-line react-hooks/refs
     prevPathnameRef.current = pathname;
     setMenuOpen(false);
     setIsPill(false);
