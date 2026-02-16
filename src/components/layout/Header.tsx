@@ -8,6 +8,7 @@ import { ArrowRight } from "lucide-react";
 import { NAV_LINKS, SITE } from "@/lib/constants";
 import NavDropdown from "./NavDropdown";
 import EBMLogo from "@/assets/images/EBM_Favicon_512.svg";
+import EBMLogoHorizontal from "@/assets/images/EBM_Logo_Horizontal_DarkBG.svg";
 import pillbarBg from "@/assets/images/pillbar-bg.webp";
 
 export default function Header() {
@@ -72,11 +73,8 @@ export default function Header() {
           }`}
       >
         <div className="mx-auto max-w-7xl flex items-stretch justify-between px-6">
-          <Link href="/" className="flex items-center gap-3 py-4">
-            <Image src={EBMLogo} alt={SITE.name} width={36} height={36} />
-            <span className="text-lg font-semibold tracking-wide text-brand-gold-light">
-              {SITE.name}
-            </span>
+          <Link href="/" className="flex items-center py-4">
+            <Image src={EBMLogoHorizontal} alt={SITE.name} width={261} height={36} />
           </Link>
 
           {/* Desktop nav */}
