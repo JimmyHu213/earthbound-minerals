@@ -27,16 +27,16 @@ export default function AboutScene() {
           rotation={[0.1 * i, 0.05 * i, 0]}
         >
           <meshPhysicalMaterial
-            color="#c8d0dc"
-            transmission={0.92}
+            color="#D4A843"
+            transmission={0.85}
             roughness={0.15}
             thickness={0.5}
             ior={1.5}
             clearcoat={1}
             clearcoatRoughness={0.1}
-            metalness={0}
+            metalness={0.1}
             transparent
-            opacity={0.6}
+            opacity={0.5 + i * 0.05}
           />
         </RoundedBox>
       ))}

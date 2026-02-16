@@ -5,22 +5,14 @@ import { useFrame } from "@react-three/fiber";
 import * as THREE from "three";
 import type { Group } from "three";
 
-function createChevronShape() {
+function createTriangleShape() {
   const shape = new THREE.Shape();
-  const w = 0.6;
-  const h = 0.8;
-  const t = 0.15;
-
-  // Outer chevron <
-  shape.moveTo(w, h);
-  shape.lineTo(-w + t, 0);
-  shape.lineTo(w, -h);
-  // Inner edge
-  shape.lineTo(w - t * 1.5, -h + t);
-  shape.lineTo(-w + t * 2.5, 0);
-  shape.lineTo(w - t * 1.5, h - t);
+  const size = 0.85;
+  const h = size * Math.sin(Math.PI / 3);
+  shape.moveTo(0, h * 0.65);
+  shape.lineTo(-size * 0.5, -h * 0.35);
+  shape.lineTo(size * 0.5, -h * 0.35);
   shape.closePath();
-
   return shape;
 }
 
@@ -34,7 +26,7 @@ const EXTRUDE_SETTINGS: THREE.ExtrudeGeometryOptions = {
 
 export default function ServicesScene() {
   const groupRef = useRef<Group>(null);
-  const chevronShape = useMemo(() => createChevronShape(), []);
+  const triangleShape = useMemo(() => createTriangleShape(), []);
 
   useFrame((_, delta) => {
     if (groupRef.current) {
@@ -48,21 +40,21 @@ export default function ServicesScene() {
       {[0, 1, 2].map((i) => (
         <mesh
           key={i}
-          position={[i * 0.2 - 0.2, 0, i * 0.25 - 0.25]}
-          rotation={[0, 0, 0]}
+          position={[i * 0.15 - 0.15, i * 0.15 - 0.15, i * 0.3 - 0.3]}
+          rotation={[0.1 * i, 0.05 * i, 0]}
         >
-          <extrudeGeometry args={[chevronShape, EXTRUDE_SETTINGS]} />
+          <extrudeGeometry args={[triangleShape, EXTRUDE_SETTINGS]} />
           <meshPhysicalMaterial
-            color="#c8d0dc"
-            transmission={0.92}
+            color="#D4A843"
+            transmission={0.85}
             roughness={0.15}
             thickness={0.5}
             ior={1.5}
             clearcoat={1}
             clearcoatRoughness={0.1}
-            metalness={0}
+            metalness={0.1}
             transparent
-            opacity={0.5 + i * 0.1}
+            opacity={0.45 + i * 0.08}
           />
         </mesh>
       ))}

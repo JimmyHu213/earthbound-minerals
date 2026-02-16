@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect, useRef, useCallback } from "react";
+import { useState, useEffect, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
@@ -15,21 +15,6 @@ export default function Header() {
   const [isPill, setIsPill] = useState(false);
   const pathname = usePathname();
   const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
-  const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
-
-  const handleMouseEnter = useCallback((label: string) => {
-    if (closeTimeoutRef.current) {
-      clearTimeout(closeTimeoutRef.current);
-      closeTimeoutRef.current = null;
-    }
-    setActiveDropdown(label);
-  }, []);
-
-  const handleMouseLeave = useCallback(() => {
-    closeTimeoutRef.current = setTimeout(() => {
-      setActiveDropdown(null);
-    }, 150);
-  }, []);
 
   const handleDropdownLinkClick = useCallback(() => {
     setActiveDropdown(null);
@@ -70,18 +55,13 @@ export default function Header() {
 
   useEffect(() => {
     const handleKeyDown = (e: KeyboardEvent) => {
-      if (e.key === "Escape") setActiveDropdown(null);
+      if (e.key === "Escape") {
+        setActiveDropdown(null);
+        setMenuOpen(false);
+      }
     };
     document.addEventListener("keydown", handleKeyDown);
     return () => document.removeEventListener("keydown", handleKeyDown);
-  }, []);
-
-  useEffect(() => {
-    return () => {
-      if (closeTimeoutRef.current) {
-        clearTimeout(closeTimeoutRef.current);
-      }
-    };
   }, []);
 
   return (
@@ -102,29 +82,13 @@ export default function Header() {
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-stretch gap-0">
             {NAV_LINKS.map((link) => (
-              <div
+              <Link
                 key={link.href}
-                className="relative flex items-stretch"
-                onMouseEnter={() => handleMouseEnter(link.label)}
-                onMouseLeave={handleMouseLeave}
+                href={link.href}
+                className="flex items-center px-4 text-base font-medium tracking-wide text-white cursor-pointer hover:text-brand-gold hover:bg-white/10 hover:backdrop-blur-md transition-all duration-200"
               >
-                <Link
-                  href={link.href}
-                  aria-expanded={activeDropdown === link.label}
-                  className="relative flex items-center px-4 text-base font-medium tracking-wide text-white cursor-pointer hover:text-brand-gold hover:bg-white/10 hover:backdrop-blur-md transition-all duration-200"
-                >
-                  {link.label}
-                </Link>
-                {activeDropdown === link.label && (
-                  <div className="absolute left-1/2 top-full -translate-x-1/2 pt-2 z-50 pointer-events-none">
-                    <NavDropdown
-                      navLabel={link.label}
-                      subLinks={link.subLinks}
-                      onLinkClick={handleDropdownLinkClick}
-                    />
-                  </div>
-                )}
-              </div>
+                {link.label}
+              </Link>
             ))}
             <Link
               href="/contact"
@@ -242,29 +206,13 @@ export default function Header() {
           {/* Desktop nav links — centered */}
           <nav className="hidden lg:flex flex-1 items-center justify-center gap-1">
             {NAV_LINKS.map((link) => (
-              <div
+              <Link
                 key={link.href}
-                className="relative"
-                onMouseEnter={() => handleMouseEnter(link.label)}
-                onMouseLeave={handleMouseLeave}
+                href={link.href}
+                className="block px-3 py-1.5 text-sm font-medium tracking-wide text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] rounded-md hover:text-brand-gold hover:bg-white/10 hover:backdrop-blur-md transition-all duration-200"
               >
-                <Link
-                  href={link.href}
-                  aria-expanded={activeDropdown === link.label}
-                  className="block px-3 py-1.5 text-sm font-medium tracking-wide text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] rounded-md hover:text-brand-gold hover:bg-white/10 hover:backdrop-blur-md transition-all duration-200"
-                >
-                  {link.label}
-                </Link>
-                {activeDropdown === link.label && (
-                  <div className="absolute left-1/2 top-full -translate-x-1/2 pt-2 z-50 pointer-events-none">
-                    <NavDropdown
-                      navLabel={link.label}
-                      subLinks={link.subLinks}
-                      onLinkClick={handleDropdownLinkClick}
-                    />
-                  </div>
-                )}
-              </div>
+                {link.label}
+              </Link>
             ))}
           </nav>
 

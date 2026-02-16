@@ -13,12 +13,16 @@ interface NavDropdownProps {
   navLabel: string;
   subLinks: readonly SubLink[];
   onLinkClick: () => void;
+  onMouseEnter?: () => void;
+  onMouseLeave?: () => void;
 }
 
-export default function NavDropdown({ navLabel, subLinks, onLinkClick }: NavDropdownProps) {
+export default function NavDropdown({ navLabel, subLinks, onLinkClick, onMouseEnter, onMouseLeave }: NavDropdownProps) {
   return (
     <div
       role="menu"
+      onMouseEnter={onMouseEnter}
+      onMouseLeave={onMouseLeave}
       className="w-[420px] overflow-hidden rounded-xl border border-white/10 bg-brand-black/90 backdrop-blur-md shadow-xl shadow-black/30 animate-dropdown-in pointer-events-auto"
     >
       <div className="flex">
