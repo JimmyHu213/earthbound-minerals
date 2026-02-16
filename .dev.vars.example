@@ -1,0 +1,4 @@
+# Copy to .dev.vars and fill in values for local development
+RESEND_API_KEY=re_xxxxxxxxxxxx
+RESEND_FROM_EMAIL=noreply@earthboundminerals.com
+CONTACT_TO_EMAIL=info@earthboundminerals.com
