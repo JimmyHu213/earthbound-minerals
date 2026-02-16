@@ -1,6 +1,6 @@
 export const SITE = {
   name: "Earthbound Minerals",
-  tagline: "Powering Industries from the Ground Up",
+  tagline: "Premium Coking Coal \u2014 From Mine to Market",
   description:
     "A United States-based coal supply company specialising in the sourcing, processing, and international distribution of premium-grade metallurgical and thermal coal. SGS-verified, ultra-low-ash coking coal delivered to steelmakers and energy producers worldwide.",
   email: "info@earthboundminerals.com",

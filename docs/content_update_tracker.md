@@ -20,13 +20,9 @@
 
 ### 1.1 — Company Tagline (`SITE.tagline`)
 
-- [ ] **NEEDS CONFIRMATION**
-- **Current:** `"Powering Industries from the Ground Up"`
-- **Option A (Updated_1):** `"Premium Coking Coal — From Mine to Market"`
-- **Option B (V2 recommended):** `"From the Ground to the World — Premium Coal, Delivered."`
-- **Option C:** `"Sourcing Excellence. Delivering Quality. Powering Industry."`
-- **Option D:** `"Mine to Market — World-Class Coal Supply"`
-- **Option E:** `"Built on Experience. Driven by Quality."`
+- [x] **DONE**
+- ~~`"Powering Industries from the Ground Up"`~~
+- **Updated to:** `"Premium Coking Coal — From Mine to Market"`
 - **File:** `src/lib/constants.ts:3`
 
 ### 1.2 — Company Description (`SITE.description`)
@@ -271,9 +267,9 @@
 
 ### 5.7 — Pillar 3: Metric
 
-- [ ] **NEEDS CONFIRMATION**
-- **Current:** `stat: "0"` / `label: "Lost-Time Incidents"`
-- **Action:** Docs don't specify a replacement number metric. Remove or keep?
+- [x] **DONE**
+- ~~`stat: "0"` / `label: "Lost-Time Incidents"`~~
+- **Removed** per client direction
 - **File:** `src/app/sustainability/page.tsx:10`
 
 ### 5.8 — Pillar 4: Text
@@ -297,17 +293,17 @@
 
 ### 5.11 — Future Target: 30% Carbon Reduction
 
-- [ ] **NEEDS CONFIRMATION**
-- **Current:** `stat: "30%"` / `label: "Carbon Reduction Target"`
-- **Action:** Confirm this is an accurate public commitment
-- **File:** `src/app/sustainability/page.tsx:146`
+- [x] **DONE**
+- ~~`stat: "30%"` / `label: "Carbon Reduction Target"`~~
+- **Removed** per client direction (entire future targets section cleared)
+- **File:** `src/app/sustainability/page.tsx`
 
 ### 5.12 — Future Target: 100% Site Rehabilitation
 
-- [ ] **NEEDS CONFIRMATION**
-- **Current:** `stat: "100%"` / `label: "Site Rehabilitation Goal"`
-- **Action:** Confirm this is an accurate public commitment
-- **File:** `src/app/sustainability/page.tsx:147`
+- [x] **DONE**
+- ~~`stat: "100%"` / `label: "Site Rehabilitation Goal"`~~
+- **Removed** per client direction (entire future targets section cleared)
+- **File:** `src/app/sustainability/page.tsx`
 
 ---
 

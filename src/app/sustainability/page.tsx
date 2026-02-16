@@ -143,19 +143,7 @@ export default function SustainabilityPage() {
             performance go hand in hand.
           </p>
 
-          <div className="mt-16 grid gap-10 sm:grid-cols-2 max-w-2xl mx-auto">
-            {[
-              { stat: "30%", label: "Carbon Reduction Target" },
-              { stat: "100%", label: "Site Rehabilitation Goal" },
-            ].map((item) => (
-              <div key={item.label} className="text-center">
-                <p className="text-3xl font-bold text-brand-gold">
-                  {item.stat}
-                </p>
-                <p className="mt-2 text-sm text-white/50">{item.label}</p>
-              </div>
-            ))}
-          </div>
+          {/* Future targets removed per client direction */}
         </div>
       </section>
     </main>
