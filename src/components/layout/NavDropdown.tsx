@@ -34,7 +34,7 @@ export default function NavDropdown({ navLabel, subLinks, onLinkClick }: NavDrop
             href={link.href}
             role="menuitem"
             onClick={onLinkClick}
-            className="flex items-center justify-between rounded-lg px-3 py-2.5 text-sm text-white/80 transition-colors hover:bg-brand-gold/10 hover:text-brand-gold"
+            className="group flex items-center justify-between rounded-lg px-3 py-2.5 text-sm text-white/80 transition-colors hover:bg-brand-gold/10 hover:text-brand-gold"
           >
             <span>{link.label}</span>
             <ArrowRight className="h-3.5 w-3.5 opacity-0 transition-opacity group-hover:opacity-100" />

@@ -1,11 +1,12 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef, useCallback } from "react";
 import Image from "next/image";
 import Link from "next/link";
 import { usePathname } from "next/navigation";
 import { ArrowRight } from "lucide-react";
 import { NAV_LINKS, SITE } from "@/lib/constants";
+import NavDropdown from "./NavDropdown";
 import EBMLogo from "@/assets/images/EBM_Favicon_512.svg";
 import pillbarBg from "@/assets/images/pillbar-bg.webp";
 
@@ -13,16 +14,41 @@ export default function Header() {
   const [menuOpen, setMenuOpen] = useState(false);
   const [isPill, setIsPill] = useState(false);
   const pathname = usePathname();
+  const [activeDropdown, setActiveDropdown] = useState<string | null>(null);
+  const closeTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null);
+
+  const handleMouseEnter = useCallback((label: string) => {
+    if (closeTimeoutRef.current) {
+      clearTimeout(closeTimeoutRef.current);
+      closeTimeoutRef.current = null;
+    }
+    setActiveDropdown(label);
+  }, []);
+
+  const handleMouseLeave = useCallback(() => {
+    closeTimeoutRef.current = setTimeout(() => {
+      setActiveDropdown(null);
+    }, 150);
+  }, []);
+
+  const handleDropdownLinkClick = useCallback(() => {
+    setActiveDropdown(null);
+    setMenuOpen(false);
+  }, []);
 
   useEffect(() => {
     setMenuOpen(false);
     setIsPill(false);
+    setActiveDropdown(null);
     const heroEl = document.querySelector("[data-hero]");
 
     if (!heroEl) {
       const handleScroll = () => {
         setIsPill(window.scrollY > 100);
-        if (window.scrollY > 100) setMenuOpen(false);
+        if (window.scrollY > 100) {
+          setMenuOpen(false);
+          setActiveDropdown(null);
+        }
       };
       window.addEventListener("scroll", handleScroll, { passive: true });
       handleScroll();
@@ -33,6 +59,7 @@ export default function Header() {
       ([entry]) => {
         setIsPill(!entry.isIntersecting);
         setMenuOpen(false);
+        setActiveDropdown(null);
       },
       { threshold: 0.5 }
     );
@@ -40,6 +67,22 @@ export default function Header() {
     observer.observe(heroEl);
     return () => observer.disconnect();
   }, [pathname]);
+
+  useEffect(() => {
+    const handleKeyDown = (e: KeyboardEvent) => {
+      if (e.key === "Escape") setActiveDropdown(null);
+    };
+    document.addEventListener("keydown", handleKeyDown);
+    return () => document.removeEventListener("keydown", handleKeyDown);
+  }, []);
+
+  useEffect(() => {
+    return () => {
+      if (closeTimeoutRef.current) {
+        clearTimeout(closeTimeoutRef.current);
+      }
+    };
+  }, []);
 
   return (
     <>
@@ -59,13 +102,29 @@ export default function Header() {
           {/* Desktop nav */}
           <nav className="hidden lg:flex items-stretch gap-0">
             {NAV_LINKS.map((link) => (
-              <Link
+              <div
                 key={link.href}
-                href={link.href}
-                className="relative flex items-center px-4 text-base font-medium tracking-wide text-white cursor-pointer hover:text-brand-gold hover:bg-white/10 hover:backdrop-blur-md transition-all duration-200"
+                className="relative flex items-stretch"
+                onMouseEnter={() => handleMouseEnter(link.label)}
+                onMouseLeave={handleMouseLeave}
               >
-                {link.label}
-              </Link>
+                <Link
+                  href={link.href}
+                  aria-expanded={activeDropdown === link.label}
+                  className="relative flex items-center px-4 text-base font-medium tracking-wide text-white cursor-pointer hover:text-brand-gold hover:bg-white/10 hover:backdrop-blur-md transition-all duration-200"
+                >
+                  {link.label}
+                </Link>
+                {activeDropdown === link.label && (
+                  <div className="absolute left-1/2 top-full -translate-x-1/2 pt-2 z-50">
+                    <NavDropdown
+                      navLabel={link.label}
+                      subLinks={link.subLinks}
+                      onLinkClick={handleDropdownLinkClick}
+                    />
+                  </div>
+                )}
+              </div>
             ))}
             <Link
               href="/contact"
@@ -111,21 +170,47 @@ export default function Header() {
 
         {/* Mobile nav */}
         {menuOpen && !isPill && (
-          <nav className="lg:hidden border-t border-brand-gold/10 bg-brand-black/95 backdrop-blur-md px-6 py-6 flex flex-col gap-5">
+          <nav className="lg:hidden border-t border-brand-gold/10 bg-brand-black/95 backdrop-blur-md px-6 py-6 flex flex-col gap-1">
             {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-base font-medium tracking-wide text-white hover:text-brand-gold transition-colors"
-                onClick={() => setMenuOpen(false)}
-              >
-                {link.label}
-              </Link>
+              <div key={link.href}>
+                <div className="flex items-center justify-between">
+                  <Link
+                    href={link.href}
+                    onClick={handleDropdownLinkClick}
+                    className="py-3 text-base font-medium tracking-wide text-white hover:text-brand-gold transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                  <button
+                    onClick={() =>
+                      setActiveDropdown(activeDropdown === link.label ? null : link.label)
+                    }
+                    aria-expanded={activeDropdown === link.label}
+                    aria-label={`Expand ${link.label} sub-menu`}
+                    className="p-2 text-white/60 hover:text-brand-gold transition-colors"
+                  >
+                    <ArrowRight
+                      className={`h-4 w-4 transition-transform duration-200 ${
+                        activeDropdown === link.label ? "rotate-90" : ""
+                      }`}
+                    />
+                  </button>
+                </div>
+                {activeDropdown === link.label && (
+                  <div className="pb-2">
+                    <NavDropdown
+                      navLabel={link.label}
+                      subLinks={link.subLinks}
+                      onLinkClick={handleDropdownLinkClick}
+                    />
+                  </div>
+                )}
+              </div>
             ))}
             <Link
               href="/contact"
-              className="mt-2 inline-flex items-center justify-center gap-2 rounded-full border border-brand-gold/40 px-5 py-2.5 text-center text-sm font-medium tracking-wide text-brand-gold hover:bg-brand-gold/10 hover:border-brand-gold hover:text-brand-gold-light transition-all"
-              onClick={() => setMenuOpen(false)}
+              className="mt-4 inline-flex items-center justify-center gap-2 rounded-full border border-brand-gold/40 px-5 py-2.5 text-center text-sm font-medium tracking-wide text-brand-gold hover:bg-brand-gold/10 hover:border-brand-gold hover:text-brand-gold-light transition-all"
+              onClick={handleDropdownLinkClick}
             >
               Get in Touch
               <ArrowRight className="h-4 w-4" />
@@ -136,7 +221,7 @@ export default function Header() {
 
       {/* Pill bar — fixed, slides in when scrolled past 50% of hero */}
       <div
-        className={`fixed z-50 left-0 right-0 mx-4 lg:mx-auto max-w-[720px] overflow-hidden shadow-lg shadow-black/30 transition-[top,opacity,transform] duration-500 ease-in-out ${menuOpen && isPill ? "rounded-2xl" : "rounded-full"
+        className={`fixed z-50 left-0 right-0 mx-4 lg:mx-auto max-w-[720px] shadow-lg shadow-black/30 transition-[top,opacity,transform] duration-500 ease-in-out ${menuOpen && isPill ? "rounded-2xl" : "rounded-full"
           } ${isPill
             ? "top-4 opacity-100 translate-y-0"
             : "-top-20 opacity-0 -translate-y-4"
@@ -157,13 +242,29 @@ export default function Header() {
           {/* Desktop nav links — centered */}
           <nav className="hidden lg:flex flex-1 items-center justify-center gap-1">
             {NAV_LINKS.map((link) => (
-              <Link
+              <div
                 key={link.href}
-                href={link.href}
-                className="px-3 py-1.5 text-sm font-medium tracking-wide text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] rounded-md hover:text-brand-gold hover:bg-white/10 hover:backdrop-blur-md transition-all duration-200"
+                className="relative"
+                onMouseEnter={() => handleMouseEnter(link.label)}
+                onMouseLeave={handleMouseLeave}
               >
-                {link.label}
-              </Link>
+                <Link
+                  href={link.href}
+                  aria-expanded={activeDropdown === link.label}
+                  className="block px-3 py-1.5 text-sm font-medium tracking-wide text-white drop-shadow-[0_1px_2px_rgba(0,0,0,0.8)] rounded-md hover:text-brand-gold hover:bg-white/10 hover:backdrop-blur-md transition-all duration-200"
+                >
+                  {link.label}
+                </Link>
+                {activeDropdown === link.label && (
+                  <div className="absolute left-1/2 top-full -translate-x-1/2 pt-2 z-50">
+                    <NavDropdown
+                      navLabel={link.label}
+                      subLinks={link.subLinks}
+                      onLinkClick={handleDropdownLinkClick}
+                    />
+                  </div>
+                )}
+              </div>
             ))}
           </nav>
 
@@ -219,16 +320,42 @@ export default function Header() {
 
         {/* Pill mobile nav dropdown */}
         {menuOpen && isPill && (
-          <nav className="lg:hidden border-t border-brand-gold/10 px-6 py-6 flex flex-col gap-5">
+          <nav className="lg:hidden border-t border-brand-gold/10 px-6 py-6 flex flex-col gap-1">
             {NAV_LINKS.map((link) => (
-              <Link
-                key={link.href}
-                href={link.href}
-                className="text-sm tracking-wide text-brand-stone-light hover:text-brand-gold transition-colors"
-                onClick={() => setMenuOpen(false)}
-              >
-                {link.label}
-              </Link>
+              <div key={link.href}>
+                <div className="flex items-center justify-between">
+                  <Link
+                    href={link.href}
+                    onClick={handleDropdownLinkClick}
+                    className="py-3 text-sm tracking-wide text-brand-stone-light hover:text-brand-gold transition-colors"
+                  >
+                    {link.label}
+                  </Link>
+                  <button
+                    onClick={() =>
+                      setActiveDropdown(activeDropdown === link.label ? null : link.label)
+                    }
+                    aria-expanded={activeDropdown === link.label}
+                    aria-label={`Expand ${link.label} sub-menu`}
+                    className="p-2 text-white/60 hover:text-brand-gold transition-colors"
+                  >
+                    <ArrowRight
+                      className={`h-4 w-4 transition-transform duration-200 ${
+                        activeDropdown === link.label ? "rotate-90" : ""
+                      }`}
+                    />
+                  </button>
+                </div>
+                {activeDropdown === link.label && (
+                  <div className="pb-2">
+                    <NavDropdown
+                      navLabel={link.label}
+                      subLinks={link.subLinks}
+                      onLinkClick={handleDropdownLinkClick}
+                    />
+                  </div>
+                )}
+              </div>
             ))}
           </nav>
         )}
