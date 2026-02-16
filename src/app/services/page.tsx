@@ -156,6 +156,61 @@ export default function ServicesPage() {
         </div>
       </section>
 
+      {/* Quality Teaser Section */}
+      <section className="bg-white py-24">
+        <div className="mx-auto max-w-7xl px-6">
+          <p className="text-xs font-medium uppercase tracking-[0.25em] text-brand-gold-dark">
+            Coal Quality
+          </p>
+          <div className="mt-4 h-px w-16 bg-brand-gold/50" />
+          <h2 className="mt-6 text-3xl font-bold tracking-tight text-brand-black sm:text-4xl">
+            SGS-Verified, Premium-Grade Coal
+          </h2>
+          <p className="mt-6 max-w-3xl text-base leading-relaxed text-brand-stone-dark">
+            Independent laboratory analysis confirms our Liberty Mine coal
+            exceeds international quality benchmarks across all key parameters.
+          </p>
+
+          <div className="mt-12 grid gap-8 sm:grid-cols-3">
+            <div className="rounded-lg bg-brand-sand p-8">
+              <p className="text-3xl font-bold text-brand-gold-dark">3.76%</p>
+              <p className="mt-1 text-sm font-medium text-brand-black">
+                Ash Content (Dry)
+              </p>
+              <p className="mt-2 text-sm text-brand-stone-dark">
+                60% below the Platts PLV benchmark of 9.3%
+              </p>
+            </div>
+            <div className="rounded-lg bg-brand-sand p-8">
+              <p className="text-3xl font-bold text-brand-gold-dark">8.5</p>
+              <p className="mt-1 text-sm font-medium text-brand-black">
+                Free Swelling Index
+              </p>
+              <p className="mt-2 text-sm text-brand-stone-dark">
+                Top of Hard Coking Coal range (6&ndash;9)
+              </p>
+            </div>
+            <div className="rounded-lg bg-brand-sand p-8">
+              <p className="text-3xl font-bold text-brand-gold-dark">
+                &gt;30,000
+              </p>
+              <p className="mt-1 text-sm font-medium text-brand-black">
+                Gieseler Max Fluidity (DDPM)
+              </p>
+              <p className="mt-2 text-sm text-brand-stone-dark">
+                Matches US High Vol A specification
+              </p>
+            </div>
+          </div>
+
+          <div className="mt-12">
+            <LinkButton href="/quality" variant="light">
+              View Full Quality Analysis
+            </LinkButton>
+          </div>
+        </div>
+      </section>
+
       {/* CTA Section */}
       <section className="bg-brand-sand py-24">
         <div className="mx-auto max-w-7xl px-6 text-center">
