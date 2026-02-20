@@ -5,7 +5,7 @@ export const SITE = {
     "A United States-based coal supply company specialising in the sourcing, processing, and international distribution of premium-grade metallurgical and thermal coal. SGS-verified, ultra-low-ash coking coal delivered to steelmakers and energy producers worldwide.",
   email: "info@earthboundminerals.com",
   phone: "+61 430 067 311",
-  address: "281 Thomson Road, Apt 405, Pikeville, KY 41501",
+  address: "281 Thompson Road, Apt 405, Pikeville, KY 41501",
   heroVideo: "/videos/metcoal.mp4",
 } as const;
 
