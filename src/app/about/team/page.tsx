@@ -1,6 +1,11 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import { ChevronRight } from "lucide-react";
 import { LEADERSHIP } from "@/lib/constants";
+
+export const metadata: Metadata = {
+  robots: { index: false, follow: false },
+};
 
 const SECTION_BGS = ["bg-white", "bg-brand-sand"];
 
